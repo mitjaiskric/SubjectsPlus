@@ -185,6 +185,11 @@ class Pluslet_1 extends Pluslet {
 
         return $this->_pluslet;
     }
+	
+	 static function getMenuName()
+  {
+  	return _('test');
+  }
 
     public function createTOC() {
         $toc = "<p class=\"clearboth\" font-size: 10px; text-align: center;\">Table of Contents</p>";

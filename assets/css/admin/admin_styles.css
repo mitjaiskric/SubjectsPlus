@@ -95,6 +95,10 @@ p.tight { margin: .2em 0;}
   max-width: 1200px;
 }
 
+.links {
+margin-bottom: 5%;
+}
+
 /* //////////////////////
 Header and nav/subnav stuff
 ////////////////////// */

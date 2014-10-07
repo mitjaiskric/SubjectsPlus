@@ -39,11 +39,21 @@ margin-right: 3%;
 </style>
 <script>
 
-jQuery('.guides').select2();
+jQuery('.guides').select2({
+
+  sortResults: function(results, container, query) {
+        if (query.term) {
+            // use the built in javascript sort function
+            return results.sort();
+        }
+        return results;
+    }
+
+});
  
 jQuery('.import_guide').on('click', function() {
 
-   
+   $(this).hide();
    
    var selected_guide = jQuery('.guides').select2("val"); 
    var selected_guide_name = jQuery('.guides option:selected').text(); 

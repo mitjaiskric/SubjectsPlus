@@ -1,5 +1,6 @@
 <?php
 namespace SubjectsPlus\Control;
+use SubjectsPlus\Control\Querier;
 
 use PDO;
 /**
@@ -214,9 +215,10 @@ class Config
 	{
 		$lstrError = '';
 
+		
 		try {
-			$dsn = 'mysql:dbname=' . $this->lobjNewConfigValues['dbName_SPlus'] . ';host=' . $this->lobjNewConfigValues['hname'] . ';port=' . $this->lobjNewConfigValues['db_port'] . ';charset=utf8';
-			$lobjConnection = new PDO($dsn, $this->lobjNewConfigValues['uname'], $this->lobjNewConfigValues['pword'], array(PDO::ATTR_PERSISTENT => true));
+			$dsn = 'mysql:dbname=subjectsplus3;host=127.0.0.1;port=3308;charset=utf8';
+			$lobjConnection = new PDO($dsn, 'librarywebu', '7cogB1iM', array(PDO::ATTR_PERSISTENT => true));
 		} catch (\PDOException $e) {
 			$lstrError .= "<h1>There was a problem connecting to the database.</h1>";
 			$lstrError .= "<p>This is the detailed error:</p>";

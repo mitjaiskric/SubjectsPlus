@@ -56,6 +56,12 @@ class Record {
   			$this->_title_id = $_POST["title_id"];
   			$this->_prefix = $_POST["prefix"];
   			$this->_title = $_POST["title"];
+		
+		//	echo  $_POST["title"];
+		//	echo "\n";
+	
+		//	var_dump ($_POST);
+			
   			$this->_alternate_title = $_POST["alternate_title"];
   			$this->_description = $_POST["description"];
 
@@ -468,6 +474,7 @@ public function buildLocation() {
  		echo "<div style=\"float: left;\"><br />";
 
       // A-Z DB List
+	  /*
  		$a_z_string = "<input type=\"hidden\" name=\"eres_display[]\" value=\"" . $this->_az_display . "\" />";
  		$az_text = _("A-Z DB List");
  		if ($this->_az_display == "Y") {
@@ -475,13 +482,13 @@ public function buildLocation() {
  		} else {
  			$a_z_string .= "<span class=\"aztag-off\">$az_text</span>";
  		}
-
+*/
  		echo "
  		$a_z_string<br /></div>
  		<label for=\"display_note[]\">" . _("Display Note") . "</label>";
 
  		if ($wysiwyg_desc == 1 && $this->_boxcount == 1) {
- 			include ($CKPath);
+ 			include_once ($CKPath);
  			// Create and output object
  			$oCKeditor = new CKEditor($CKBasePath);
  			$oCKeditor->timestamp = time();

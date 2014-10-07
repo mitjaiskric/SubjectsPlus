@@ -64,6 +64,8 @@ $RECYCLE.BIN/
 assets/cache/
 control/includes/config.php
 
+*/config.php
+
 *.PHPEdit*
 
 subjects/includes/pgcache/*

@@ -34,7 +34,8 @@ class Querier  {
 
     private $_query;
     private $_connection;
-
+	private $_no_debug;
+	
     function __construct() {
         // This creates the connection by reading the config.php
 
@@ -66,7 +67,7 @@ class Querier  {
         }
     }
 
-    public function query($sql, $fetch_style = NULL) {
+    public function query($sql, $fetch_style = NULL, $no_debug=FALSE) {
 
         // Default is numbered array
         if ($fetch_style === NULL) {
@@ -75,15 +76,30 @@ class Querier  {
 
         $connection = $this->_connection;
 
+		if (is_array($sql)) {
+		
+		$result = $connection->query($sql[0]);
+		
+		
+		} else {
+		
            $result = $connection->query($sql);
-        if (!$result) {
+        
+		}
+		
+		if (!$result) {
 
-            echo "<p><h2>Woah! There was a problem with that query.</h2> Maybe this will help: ";
-            print_r($connection->errorInfo());
-            echo "</p>";
-            echo $sql;
-
+			if ($no_debug === FALSE) {
+			
+			/*
+				echo "<p><h2>Woah! There was a problem with that query.</h2> Maybe this will help: ";
+				print_r($connection->errorInfo());
+				echo "</p>";
+				echo $sql;
+			*/	
             $rows = NULL;
+			}
+			
         } else {
            $rows = $result->fetchAll($fetch_style);
         }

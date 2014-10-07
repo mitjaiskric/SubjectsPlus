@@ -905,10 +905,12 @@ function setupAllColorboxes()
         iframe: true,
         innerWidth:960,
         innerHeight:600,
+		fastIframe:false,
 
         onClosed:function() {
             //reload window to show changes
-
+			  // Refresh or else you'll be editing a zombie guide
++           location.reload();
             //window.location.href = window.location.href;
 
         }
