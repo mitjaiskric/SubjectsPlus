@@ -896,7 +896,7 @@ class Guide
         	$class = "dropspotty";
         	$class .= $lobjTab['visibility'] == 0 ? ' hidden_tab' : '';
             if (!$this->_isAdmin && $key == 0) {
-            $tabs .= "<li class=\"$class\" style=\"height: auto;\" data-external-link=\"{$lobjTab['external_url']}\" data-visibility=\"{$lobjTab['visibility']}\"><a href=\"#tabs-$key\" class=\"$home_tab_class\">$home_tab_text</a>";
+            $tabs .= "<li class=\"$class\" style=\"height: auto;\" data-external-link=\"{$lobjTab['external_url']}\" data-visibility=\"{$lobjTab['visibility']}\"><a href=\"#tabs-$key\" class=\"$home_tab_class ui-tabs-hide\">$home_tab_text</a>";
 
             } else {
             $tabs .= "<li class=\"$class\" style=\"height: auto;\" data-external-link=\"{$lobjTab['external_url']}\" data-visibility=\"{$lobjTab['visibility']}\"><a href=\"#tabs-$key\">{$lobjTab['label']}</a>";
