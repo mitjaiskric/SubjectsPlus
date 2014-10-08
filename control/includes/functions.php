@@ -991,7 +991,7 @@ function displayLogoOnlyHeader()
 	//display logo only header
 	?>
 		<header id="header">
-		  <img class="login-only-logo" src="<?php echo 'https://' .$lstrURL . '/assets/'; ?>images/admin/logo_small.png" />
+		  <img class="login-only-logo" src="<?php echo '//' .$lstrURL . '/assets/'; ?>images/admin/logo_small.png" />
 		</header>
 		<?php
 }
@@ -1084,7 +1084,7 @@ function getAssetURL()
 		}
 	}
 
-	return 'https://' . $lstrURL . '/assets/';
+	return '//' . $lstrURL . '/assets/';
 }
 
 /**
@@ -1105,12 +1105,12 @@ function getControlURL()
 		{
 			unset($lobjSplit[$i]);
 			$lstrURL = implode( '/' , $lobjSplit );
-			$lstrURL = 'https://' . $lstrURL . '/control/';
+			$lstrURL = '//' . $lstrURL . '/control/';
 			break;
 		}elseif($lobjSplit[$i] == 'control')
 		{
 			$lstrURL = implode( '/' , $lobjSplit );
-			$lstrURL = 'https://' . $lstrURL . '/';
+			$lstrURL = '//' . $lstrURL . '/';
 			break;
 		}else
 		{
@@ -1134,12 +1134,12 @@ function getSubjectsURL()
 		{
 			unset($lobjSplit[$i]);
 			$lstrURL = implode( '/' , $lobjSplit );
-			$lstrURL = 'https://' . $lstrURL . '/subjects/';
+			$lstrURL = '//' . $lstrURL . '/subjects/';
 			break;
 		}elseif($lobjSplit[$i] == 'control')
 		{
 			$lstrURL = implode( '/' , $lobjSplit );
-			$lstrURL = 'https://' . $lstrURL . '/';
+			$lstrURL = '//' . $lstrURL . '/';
 			break;
 		}else
 		{
