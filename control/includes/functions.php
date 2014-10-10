@@ -1612,7 +1612,7 @@ function tokenizeText($our_text, $our_subject_id = "") {
         } else {
 
             $our_text = $our_text;
-            return;
+            return $our_text;
         }
         $our_text = $tokenized;
         return $our_text;
