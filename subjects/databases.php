@@ -9,11 +9,20 @@
 
 use SubjectsPlus\Control\Querier;
 use SubjectsPlus\Control\CompleteMe;
-use SubjectsPlus\Control\DbHandler;
-    
+use SubjectsPlus\Control\DbHandler;    
+
 include("../control/includes/config.php");
 include("../control/includes/functions.php");
 include("../control/includes/autoloader.php");
+
+
+$subjects_theme = "um";
+
+if (isset($subjects_theme)) {
+  include("themes/$subjects_theme/databases.php");
+  exit; 
+}
+
 
 $db = new Querier;
     
@@ -167,14 +176,13 @@ if (isset ($v2styles) && $v2styles == 1) {
 
 ?>
 
-<div class="pure-g-r">
-<div class="pure-u-1 database-page-header"><?php //print $our_letter_nav; ?></div>
-<div class="pure-u-2-3">
+<div class="pure-g">
+<div class="pure-u-1 pure-u-md-2-3">
 
       <?php print $layout; ?>
 
 </div>
-<div class="pure-u-1-3 database-page">
+<div class="pure-u-1 pure-u-md-1-3 database-page">
   <!-- start pluslet -->
   <div class="pluslet">
     <div class="titlebar">

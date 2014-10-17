@@ -128,17 +128,18 @@ $pword = "password";
 $dbName_SPlus = "subjectsplus";
 
 //////////////////////
-// Responsive Layout?
-// This will add more css weight to page load
-//////////////////////
-
-$is_responsive = TRUE;  // FALSE is off
-
-//////////////////////
 // Open database links with a target=blank
 //////////////////////
 
-$target_blank = FALSE;
+$target_blank = TRUE;
+
+//////////////////////
+// Header switcher
+// This allows SP to mimic the style of different sites,
+// e.g., for a differently-branded branch library
+//////////////////////
+
+$guide_headers = array( 'default' );
 
 //////////////////////
 // Mmm . . . delicious

@@ -81,7 +81,9 @@ if(!is_writable($lstrConfigFilePath))
 
 							"user_photo_update" => array( _( "Enable Users to Edit Headshot Photo" ), "", "boolean", "right", "small", "" , "" ),
 
-							"is_responsive" => array( _( "Use Responsive Design" ), "", "boolean", "right", "small", "" , "" ),
+							"target_blank" => array( _( "Have database links show in new tab" ), _("Affects display on databases.php and within subject guides"), "boolean", "right", "small", "" , "" ),
+
+							"guide_headers" => array( _( "Header Switcher" ), _("Have more than one header choice for a guide"), "array", "right", "large", "" , _("Enter a comma separated list of headers.  The header name you put here will correspond to a header file on the server.  E.g., 'chc' would point to subjects/includes/header_chc.php") ),
 
 							"mod_rewrite" => array( _( "Use URL rewrites" ), _( "Make links prettier." ), "boolean", "right", "small", "" , "" ),
 

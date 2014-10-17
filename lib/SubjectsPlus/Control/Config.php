@@ -1,5 +1,6 @@
 <?php
 namespace SubjectsPlus\Control;
+use SubjectsPlus\Control\Querier;
 
 use PDO;
 /**
@@ -214,9 +215,10 @@ class Config
 	{
 		$lstrError = '';
 
+		
 		try {
-			$dsn = 'mysql:dbname=' . $this->lobjNewConfigValues['dbName_SPlus'] . ';host=' . $this->lobjNewConfigValues['hname'] . ';port=' . $this->lobjNewConfigValues['db_port'] . ';charset=utf8';
-			$lobjConnection = new PDO($dsn, $this->lobjNewConfigValues['uname'], $this->lobjNewConfigValues['pword'], array(PDO::ATTR_PERSISTENT => true));
+			$dsn = 'mysql:dbname=subjectsplus3;host=127.0.0.1;port=3308;charset=utf8';
+			$lobjConnection = new PDO($dsn, 'librarywebu', '7cogB1iM', array(PDO::ATTR_PERSISTENT => true));
 		} catch (\PDOException $e) {
 			$lstrError .= "<h1>There was a problem connecting to the database.</h1>";
 			$lstrError .= "<p>This is the detailed error:</p>";
@@ -447,7 +449,7 @@ class Config
 					//configurations
 					if( in_array( $lstrKey, array( 'all_tbtags' ) ) )
 					{
-						$lstrHTML .= " disabled />\n<span style=\"font-size: smaller\">**" . _( "This is automatically generated on installation" ) . ".
+						$lstrHTML .= " disabled />\n<br /><span style=\"font-size: smaller\">**" . _( "This is automatically generated on installation" ) . ".
 										<a onclick=\"javascript: enableTextBox(this);\" style=\"cursor: pointer; color: #C03957; text-decoration: underline;\" >" . _( "Edit?" ) . "</a></span>\n";
 						break;
 					}
@@ -522,7 +524,7 @@ class Config
 		?>
 		<form id="config_form" class="pure-form pure-form-stacked" action="edit-config.php" method="POST">
 
-			<div class="pure-g-r">
+			<div class="pure-g">
 				<div class="pure-u-1-3">
 				    <div class="pluslet">
 				        <div class="titlebar">
@@ -795,7 +797,7 @@ class Config
 				$lstrHTML .= "&nbsp;<span class=\"tooltipcontainer\"><img class=\"tooltip\" src=\"../assets/images/icons/help.png\" data-notes=\"{$lstrTitle}\" /></span>\n";
 			}
 
-			$lstrHTML .= "<br />\n";
+			//$lstrHTML .= "<br />\n";
 			$lstrHTML .= "<p style=\"font-size: smaller; padding: 0px 0px 5px 0px;\">{$lobjOption[1]}</p>\n";
 
 			//based on type, create HTML form inputs

@@ -12,12 +12,19 @@ use SubjectsPlus\Control\Dropdown;
 use SubjectsPlus\Control\CompleteMe;
 use SubjectsPlus\Control\Querier;
 
-$description = "A searchable, sortable list of Frequently Asked Questions";
-$keywords = "FAQ, FAQs, help, questions";
-
 include("../control/includes/config.php");
 include("../control/includes/functions.php");
 include("../control/includes/autoloader.php");
+
+$subjects_theme = "um";
+
+if (isset($subjects_theme)) {
+  include("themes/$subjects_theme/faq.php");
+  exit; 
+}
+
+$description = "A searchable, sortable list of Frequently Asked Questions";
+$keywords = "FAQ, FAQs, help, questions";
 
 $use_jquery = array("ui");
 
@@ -266,9 +273,9 @@ foreach ($collections_result as $myrow1) {
 }
 
 ?>
-
-<div class="pure-g-r">
-<div class="pure-u-2-3">
+<br />
+<div class="pure-g">
+<div class="pure-u-1 pure-u-md-2-3">
 <?php
 //$num_faqs = $row_count - 1;
 // print "<p style=\"background-color: #ffffcf;\"><strong>Note:</strong>  $num_faqs FAQs displayed.  Search <strong>all FAQs</strong> with the boxes to the right.</p><br />";
@@ -287,7 +294,7 @@ if (isset($index)) {
 
 print $results; ?>
 </div>
-<div class="pure-u-1-3">
+<div class="pure-u-1  pure-u-md-1-3">
   <a name="rdiv"></a>
     <div class="pluslet">
         <div class="titlebar">
