@@ -98,11 +98,13 @@ foreach ($rnew as $myrow) {
   $db_url = "";
 
   // add proxy string if necessary
+
   if ($myrow[0][2] != 1) {
     $db_url = $proxyURL;
   }
 
   $newlist .= "<li><a href=\"$db_url$myrow[0]\">$myrow[0]</a></li>\n";
+
 }
 $newlist .= "</ul>\n";
 
@@ -183,7 +185,11 @@ $trial_list = "<ul>\n";
       $db_url = $proxyURL;
     }
 
+<<<<<<< HEAD
+    $trial_list .= "<li><a href=\"" . $db_url . $myrow[1] . "\">$myrow[0]</a></li>\n";
+=======
     $trial_list .= "<li><a href=\"$db_url$myrow[1]\">$myrow[0]</a></li>\n";
+>>>>>>> e889c22bcdc33019ce5eeab3a1e75b50b78070f2
 
   }
 
@@ -266,7 +272,15 @@ $legend = "<p>\n<img src=\"$IconPath/v2-lock.png\" border=\"0\" alt=\"Restricted
 // Load footer file
 ///////////////////////////
 
+<<<<<<< HEAD
 include("includes/footer_um.php");
+=======
+<<<<<<< HEAD
+include("includes/footer_um.php");
+=======
+include("includes/um_footer.php");
+>>>>>>> e889c22bcdc33019ce5eeab3a1e75b50b78070f2
+>>>>>>> 0c44d3f22c96228e8c59d931fb5d69e9bb56e968
 ?>
 
 <script type="text/javascript" language="javascript">

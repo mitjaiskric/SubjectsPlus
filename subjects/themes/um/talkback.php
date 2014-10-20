@@ -19,6 +19,11 @@
 use SubjectsPlus\Control\Querier;
 
 $db = new Querier;
+<<<<<<< HEAD
+
+$use_jquery = array();
+=======
+>>>>>>> e889c22bcdc33019ce5eeab3a1e75b50b78070f2
     
 /* Set local variables */
 
