@@ -116,6 +116,8 @@ class Staff {
       	$q1 = "select staff_id, lname, fname, title, tel, department_id, staff_sort, email, ip, user_type_id, password, ptags, active, bio from staff where email = '" . $this->_email . "'";
       	$staffArray = $querier->query($q1);
 
+	print_r ($staffArray);
+
       	$this->_debug .= "<p class=\"debug\">Staff query: $q1";
       	// Test if these exist, otherwise go to plan B
       	if ($staffArray == FALSE) {

@@ -148,4 +148,3 @@ class Querier  {
 		return $this->_connection->errorInfo();
 	}
 }
-?>

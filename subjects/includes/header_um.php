@@ -25,6 +25,13 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
     define("THEME_BASE_DIR", "http://localhost/dev-www2/wp-content/themes/umiami/");
 }
 
+
+ if($_SERVER["HTTPS"] == "on") {
+   header("HTTP/1.1 301 Moved Permanently");
+   header("Location: http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
+   exit();
+}
+
 // Load our jQuery libraries + some css
 if (isset($use_jquery)) { print generatejQuery($use_jquery);
 }

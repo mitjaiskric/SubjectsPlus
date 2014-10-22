@@ -83,7 +83,9 @@ class LibGuidesImport {
   }
 
   public function output_guides($lib_guides_xml_path) {
+    // This method returns a select box with all the guides from the XML
     
+
     $libguides_xml= new \SimpleXMLElement(file_get_contents($lib_guides_xml_path,'r'));
     $guide_names = $libguides_xml->xpath("/LIBGUIDES[1]/GUIDES[1]/GUIDE/NAME");
     
@@ -106,6 +108,7 @@ class LibGuidesImport {
 
   public function guide_imported() {
     
+
     $guide_id = $this->getGuideID();
 
 
@@ -119,7 +122,7 @@ class LibGuidesImport {
   
   
   
-    public function guide_dupe($guide_title) {
+  public function guide_dupe($guide_title) {
     
     $guide_id = $this->getGuideID();
 
@@ -171,8 +174,7 @@ class LibGuidesImport {
   public function load_libguides_links_xml($lib_guides_xml_path) {
 
     $db = new Querier;
-    
-    
+     
     $guide_id = $this->getGuideID();
     
 

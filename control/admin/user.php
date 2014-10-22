@@ -19,6 +19,7 @@ $page_title = "Admin::Users";
 $feedback = "";
     
 
+
     
 include("../includes/header.php");
 
@@ -45,9 +46,13 @@ if (isset($_GET["browse"])) {
 
     $querier = new Querier();
     $typeArray = $querier->query($q);
-
+  
+ 
+  
     print "<div class=\"pure-g\">
   <div class=\"pure-u-1\">";
+
+ 
 
     // Loop through user types
     foreach ($typeArray as $value) {

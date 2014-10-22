@@ -6,6 +6,9 @@ code, but with their permission, the rechristened "SubjectsPlus" is available un
 
 // LICENSE //
 
+
+
+
 Copyright (C) 2002 East Carolina University (Joyner Library)
 Copyright (C) 2007-2013 Andrew Darby
 

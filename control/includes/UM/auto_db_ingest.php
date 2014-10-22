@@ -130,7 +130,7 @@ $headers .= 'From: UM Libraries WET <agdarby@miami.edu>' . "\n";
 
 
 // Mail it
-//mail($to, $subject, $message, $headers);
+mail($to, $subject, $message, $headers);
 /////////////////////////////
 // Local Functions
 // Other functions from functions.php are used!	
