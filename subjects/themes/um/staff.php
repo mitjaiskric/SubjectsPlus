@@ -198,14 +198,7 @@ include("includes/header_um.php");
           
       });
 
-      $( ".footable .zebra.evenrow, .footable .zebra.evenrow td, .footable-toggle").on("click", function() {
-
-        if ($rowcolor = true){
-            $(".footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-          }
-          
-
-      });
+      
 
 </script>
 
