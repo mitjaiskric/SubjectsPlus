@@ -153,35 +153,28 @@ include("includes/header_um.php");
 <script src="<?php print $AssetPath; ?>js/footable.sort.js" type="text/javascript"></script>
 <script src="<?php print $AssetPath; ?>js/footable.filter.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-  
+<script type="text/javascript">  
     
     $('.footable').footable({
         breakpoints: {
             mid: 600,
             phone:480
         }
-      });
+    });
 
-      $('.footable').trigger('footable_expand_first_row');
-
-      $('.footable').bind('footable_breakpoint', function() {
+    $('.footable').bind('footable_breakpoint', function() {
 
           $('.footable').trigger('footable_expand_first_row');
 
           $(".footable-row-detail").addClass("evenrow");
 
           $( ".footable .zebra.evenrow, .footable .zebra.evenrow td, .footable-toggle").on("click", function() {
-
               if ($rowcolor = true){
                   $(".footable-row-detail .footable-row-detail-cell").addClass("evenrow");
               }
-
-
           });
 
-
-      });
+    });
 
       $('.clear-filter').click(function (e) {
             e.preventDefault();
@@ -194,11 +187,9 @@ include("includes/header_um.php");
       $rowcolor.each(function() {
           if ($rowcolor = true){
             $(".footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-          }
-          
+          }          
       });
 
-      
 
 </script>
 
