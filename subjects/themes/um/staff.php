@@ -153,7 +153,6 @@ include("includes/header_um.php");
 <script src="themes/um/js/footable.sort.js" type="text/javascript"></script>
 <script src="themes/um/js/footable.filter.js" type="text/javascript"></script>
 
-
     <script type="text/javascript">
         //set breakpoints
         $('.footable').footable({
