@@ -322,8 +322,10 @@ console.log(tabs);
 	     	jQuery(selected_box).effect("pulsate", {
 	     		times:1
 	     	}, 2000);
+			if (box_id) {
 	     	window.location.hash = 'box-' + box_id;
-         }
+			}
+		 }
 	   });
 	   
 	   $(".printer_tabs").colorbox({html: "<h1>Print Selection</h1><div class=\"printDialog\"><ul><li><a onclick=\"window.print();\" class=\"pure-button pure-button-topsearch\">Print Current Tab</a></li><li><a onclick=\"printView();\" class=\"pure-button pure-button-topsearch\">Print All Tabs</a></li></ul></div>", innerWidth:640, innerHeight:480});
@@ -337,19 +339,28 @@ console.log(tabs);
 		
 			var tab_id = event.target.hash.split('-')[1];
 	     	var box_id = event.target.hash.split('-')[2];
+			
+			console.log(event.target.hash);
+			
 	     	var selected_box = ".pluslet-" + box_id;
  if ($('#tabs-1').text()) {
 	     	$('#tabs').tabs('select', tab_id);
 }
+
+
 	     	jQuery(selected_box).effect("pulsate", {
 	     		times:1
 	     	}, 2000);
+			console.log(box_id);
+			
+			if (box_id) {
 	     	window.location.hash = 'box-' + box_id;
-         });
+         }	
+		 
+		 });
 		 });
 		 
-		 
-	   
+		
 	   
 </script>
 
