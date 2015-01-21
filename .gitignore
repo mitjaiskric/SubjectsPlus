@@ -80,3 +80,7 @@ db.ini
 *.ini*
 *.db.ini*
 new_acquisitions.php
+
+*.jpg
+*.png
+*.gif
