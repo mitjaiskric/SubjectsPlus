@@ -750,25 +750,37 @@ function seeRecentChanges($staff_id, $limit=10) {
 
 function getHeadshot($email, $pic_size="medium", $class="staff_photo") {
 
-  $name_id = explode("@", $email);
+  
+   $name_id = explode("@", $email);
   $lib_image = "_" . $name_id[0];
   global $AssetPath;
+  // Get the real file path for the headshot image 
+  $headshot_path  =  dirname(dirname(dirname(__FILE__))) . "/assets/users/$lib_image/headshot.jpg";
 
-  $headshot = "<img src=\"" . $AssetPath . "" . "/users/$lib_image/headshot.jpg\" alt=\"$email\" title=\"$email\"";
+  if(file_exists($headshot_path)) {
+
+      // Check if the image is the UM logo
+      $image_hash = md5_file($headshot_path);
+      $um_logo = "91b8c9ec083c5abc898a5c482aac959e";
+
+      if($image_hash == $um_logo) {} else {
+
+              $headshot = "<img src=\"" . $AssetPath . "" . "users/$lib_image/headshot.jpg\" alt=\"$email\" title=\"$email\"";
+
   switch ($pic_size) {
     case "small":
       $headshot .= " width=\"50\"";
-      break;
-    case "smaller":
-      $headshot .= " width=\"40\"";
       break;
     case "medium":
       $headshot .= " width=\"70\"";
       break;
   }
 
-  $headshot .= " class=\"$class\" />";
+  $headshot .= " class=\"staff_photo\"  align=\"left\" />";
+  // If the image exists and isn't the UM logo return the img html
   return $headshot;
+     }
+	 }
 }
 
 // Display staff images
@@ -794,7 +806,7 @@ function showStaff($email, $picture=1, $pic_size="medium", $link_name = 0) {
       $name_id = explode("@", $email);
 
       if ($mod_rewrite == 1) {
-        $linky = "staff_details.php?name=" . $name_id[0];
+        $linky = "/subjects/profile/" . $name_id[0];
       } else {
         $linky = "staff_details.php?name=" . $name_id[0];
       }

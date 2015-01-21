@@ -16,9 +16,12 @@
 <?php 
 
 // Turn off https with a redirect on front end pages 
-if(isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != ""){
+if(isset($_SERVER['HTTPS'])){
+
+if ($_SERVER['HTTPS'] != "") {
     $redirect = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     header("Location: $redirect");
+	}
 }
 
 

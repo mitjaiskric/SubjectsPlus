@@ -23,6 +23,7 @@ class StaffDisplay {
     $selected = scrubData($qualifier);
 
     switch ($qualifier) {
+	
       case "Faculty Profiles":
         $q = "select lname, fname, title, tel, email, staff_id, ptags
 			FROM staff
@@ -30,6 +31,8 @@ class StaffDisplay {
             AND ptags like '%librarian%'
 			order by lname, fname";
 
+			$db = new Querier;
+			
         $r = $db->query($q);
 
         $items = "<table width=\"100%\" class=\"footable\">";
@@ -60,7 +63,7 @@ class StaffDisplay {
           }
 
           if ($mod_rewrite == 1) {
-            $link_to_details = "staff/" . $name_id[0];
+            $link_to_details = "/subjects/profile/" . $name_id[0];
           } else {
             $link_to_details = "staff_details.php?name=" . $name_id[0];
           }
@@ -94,6 +97,7 @@ class StaffDisplay {
 			FROM department d, staff
 			WHERE d.department_id = staff.department_id
 			AND user_type_id = '1'
+			
             AND active = 1
 			order by department_sort, d.name,  staff_sort desc, lname";
 
@@ -134,7 +138,7 @@ class StaffDisplay {
           // end subject listing
 
           if ($mod_rewrite == 1) {
-            $link_to_details = "staff/" . $name_id[0];
+            $link_to_details = "/subjects/profile/" . $name_id[0];
           } else {
             $link_to_details = "staff_details.php?name=" . $name_id[0];
           }
@@ -250,6 +254,7 @@ class StaffDisplay {
 			AND staff_subject.subject_id = subject.subject_id
 			AND type = 'Subject'
             AND staff.active = 1
+			AND staff.user_type_id = '1'
             AND subject.active = 1
             AND shortform != 'NewDatabases'
 			order by subject, lname, fname";
@@ -305,7 +310,7 @@ class StaffDisplay {
           $items .= "<td>";
 
           if ($mod_rewrite == 1) {
-            $linky = "staff_details.php?name=" . $name_id[0];
+            $linky = "/subjects/profile/" . $name_id[0];
           } else {
             $linky = "staff_details.php?name=" . $name_id[0];
           }
@@ -376,7 +381,7 @@ class StaffDisplay {
           }
 
           if ($mod_rewrite == 1) {
-            $link_to_details = "staff/" . $name_id[0];
+            $link_to_details = "/subjects/profile/" . $name_id[0];
           } else {
             $link_to_details = "staff_details.php?name=" . $name_id[0];
           }
@@ -431,6 +436,7 @@ class StaffDisplay {
               WHERE subject.subject_id = staff_subject.subject_id
               AND staff_subject.staff_id = $staff_id
               AND subject.active = 1
+			  AND type = 'Subject'
               AND shortform != 'NewDatabases'
               ORDER BY subject";
       //print $q2;

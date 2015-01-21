@@ -81,7 +81,6 @@ $dept_intro = '
           <li><a href="#119">Rosenstiel School of Marine Science & Atmospheric Science Library</a></li>
           <li><a href="#104">Special Collections</a></li>
           <li><a href="#133">University Archives</a></li>
-          <li><a href="#139">University Instructional Advancement Center</a></li>
       </ul>
     </div> <!-- end breather -->
 </div>
@@ -91,7 +90,7 @@ $dept_intro = '
 <br />';
 
 
-$our_cats = array("A-Z", "By Department","Subject Librarians A-Z", "Librarians by Subject Specialty");
+$our_cats = array("A-Z", "By Department","Subject Librarians A-Z", "Librarians by Subject Specialty", "Faculty Profiles");
 
 if (!isset($_GET["letter"]) || $_GET["letter"] == "") {$_GET["letter"] = "A-Z";}
 
@@ -149,9 +148,9 @@ include("includes/header_um.php");
 
 <!--Data Table-->
 <link type="text/css" rel="stylesheet" href="<?php print $AssetPath; ?>css/shared/footable.core.css">
-<script src="themes/um/js/footable.js" type="text/javascript"></script>
-<script src="themes/um/js/footable.sort.js" type="text/javascript"></script>
-<script src="themes/um/js/footable.filter.js" type="text/javascript"></script>
+<script src="http://sp.library.miami.edu/subjects/themes/um/js/footable.js" type="text/javascript"></script>
+<script src="http://sp.library.miami.edu/subjects/themes/um/js/footable.sort.js" type="text/javascript"></script>
+<script src="http://sp.library.miami.edu/subjects/themes/um/js/footable.filter.js" type="text/javascript"></script>
 
 <script type="text/javascript">     
 
