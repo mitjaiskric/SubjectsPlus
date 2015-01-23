@@ -26,7 +26,7 @@ $all_guides = "";
 ///////////////
 
 
-$ignoreMe = array("headshot.jpg"); // files we don't care about
+$ignoreMe = array("headshot.jpg", "headshot_large.jpg"); // files we don't care about
 //this users
 $this_user = explode("@", $_SESSION["email"]);
 /*

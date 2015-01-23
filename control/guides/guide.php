@@ -405,6 +405,8 @@ ob_end_flush();
      buttons: {
        Add: function() {
          addTab();
+		 console.log("adding!");
+		 
          $( this ).dialog( "close" );
        },
        Cancel: function() {
@@ -541,10 +543,12 @@ ob_end_flush();
      addTab();
      dialog.dialog( "close" );
      event.preventDefault();
+	 console.log("Tabbing!");
    });
 
    // actual addTab function: adds new tab using the input from the form above
    function addTab() {
+	   console.log("Trying to add a tab");
      var label = tabTitle.val() || "Tab " + tabCounter,
      external_link = $('input#tab_external_link').val(),
      id = "tabs-" + tabCounter,
@@ -560,12 +564,14 @@ ob_end_flush();
        data: { action : 'create' },
        dataType: "html",
        success: function(html) {
+		   console.log("Success on calleing section_data");
          tabs.tabs("destroy");
 
-         tabs.append( "<div id='" + id + "' class=\"sptab ui-tabs-hide\">" + html
+         $('.guidewrapper').append( "<div id='" + id + "' class=\"sptab ui-tabs-hide\">" + html
                       + "</div>" );
 
-         jQuery("#response").hide();
+		console.log(html);
+         //jQuery("#response").hide();
          jQuery("#save_guide").fadeIn();
 
          tabs.tabs();
@@ -659,7 +665,7 @@ ob_end_flush();
 	   jQuery('.find-guide-input').autocomplete({
 
 	     minLength	: 3,
-	     source		: '//' + document.domain + "/" + sp_path + "/control/includes/autocomplete_data.php?collection=guide&subject_id=" + <?php echo $this_id; ?> ,
+	     source		: '//' + document.domain + "/" + sp_path + "/includes/autocomplete_data.php?collection=guide&subject_id=" + <?php echo $this_id; ?> ,
 	     focus: function(event, ui) {
 
 	       event.preventDefault();
@@ -776,12 +782,9 @@ if (isset($lobj)) {
               }
 	    });
 	  });
-
-
-
+	 </script>
 
  
-	 </script>
 
 	 <div class="guidewrapper">
 	   <div id="tabs">
