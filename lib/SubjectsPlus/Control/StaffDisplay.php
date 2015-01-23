@@ -154,7 +154,7 @@ class StaffDisplay {
           $items .= getHeadshot($email, 'medium');
 
           $items .= "</td>
-		      <td class=\"$row_colour\"><span class=\"staff_contact\">";          
+		      <td class=\"$row_colour staff-name-row\"><span class=\"staff_contact\">";          
 
           if ($print_display != 1) {
             $items .= "<a href=\"$link_to_details\">$lname, $fname</a>";
@@ -164,7 +164,7 @@ class StaffDisplay {
           
           $items .= "</span></td>
     			<td class=\"$row_colour\">$title $assoc_subjects</td>
-    			<td class=\"$row_colour\">$tel_prefix$tel </td>
+    			<td class=\"$row_colour staff-tel-row\">$tel_prefix$tel </td>
     			<td class=\"$row_colour\"><a href=\"mailto:$email\">$email</a></td></tr>";
 
           $row_count++;

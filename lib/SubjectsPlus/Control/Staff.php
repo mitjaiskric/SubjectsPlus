@@ -587,6 +587,21 @@ print "<div class=\"pure-u-1-3\">";
     // Password
     ///////////////
 
+	global $UM;
+	
+	
+	if ($UM) { 
+	
+	if ($this->_staff_id != "") {
+      $our_password = "<p  ><a href=\"../includes/set_password.php?staff_id=" . $this->_staff_id . "\" id=\"reset_password\">" . _("The password is hidden.  Reset?") . "</a></p>
+        ";
+    } else {
+      $our_password = "<input type=\"hidden\" name=\"password\" size=\"20\" value=\"Ttytpyl!@121!\" class=\"required_field\" /><br />
+		<p style=\"font-size: smaller\">The password for the user is their myUM password.</p>";
+    }
+	
+	} else {
+	
     if ($this->_staff_id != "") {
       $our_password = "<p  ><a href=\"../includes/set_password.php?staff_id=" . $this->_staff_id . "\" id=\"reset_password\">" . _("The password is hidden.  Reset?") . "</a></p>
         ";
@@ -594,7 +609,7 @@ print "<div class=\"pure-u-1-3\">";
       $our_password = "<input type=\"password\" name=\"password\" size=\"20\" class=\"required_field\" /><br />
 		<p style=\"font-size: smaller\">The password is stored as a hash in the database, but unless you have SSL travels clear text across the internet.</p>";
     }
-
+}
     makePluslet("Password", $our_password, "no_overflow");
 
     /////////////////
@@ -950,6 +965,7 @@ public function outputLatLongForm() {
 		 . $db->quote(scrubData($this->_intercom)) . ","
      . $db->quote(scrubData($this->_lat_long)) . ")";
 
+  // echo $qInsertStaff;
    
     $rInsertStaff = $db->exec($qInsertStaff);
 

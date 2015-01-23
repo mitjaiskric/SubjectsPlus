@@ -165,12 +165,18 @@ class Autocomplete {
     // This takes the results and creates an array that will be turned into JSON
 
     foreach ($result as $myrow)  {
-
+		
+		
       //add no title label if empty
       $myrow['label'] = empty($myrow['label']) ? '[no title]' : $myrow['label'];
 
-      $arr[$i]['label'] = $myrow['label'];
+      
 
+	  $myrow['label'] = html_entity_decode($myrow['label'], ENT_QUOTES);
+	  
+	  $arr[$i]['label'] = $myrow['label'];
+	  
+		
       if(isset($myrow['content_type'])) {
 
         $arr[$i]['id'] = $myrow['id'];
