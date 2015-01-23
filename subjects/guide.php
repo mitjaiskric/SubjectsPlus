@@ -177,8 +177,8 @@ print $social_and_search;
         <div id="tab-container">
             <?php
 			
-			$printer_tabs ='<div class="printer_tabs"><div class="pure-button pure-button-topsearch print-img-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>'; 
-            $printer_no_tabs ='<div class="printer_no_tabs"><div class="pure-button pure-button-topsearch print-img-no-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>';
+			$printer_tabs ='<div class="printer_tabs"><div class="pure-button pure-button-topsearch print-img-tabs"><img src="../../assets/images/printer.png" alt="Print" title="Print"></div></div>'; 
+            $printer_no_tabs ='<div class="printer_no_tabs"><div class="pure-button pure-button-topsearch print-img-no-tabs"><img src="../../assets/images/printer.png" alt="Print" title="Print"></div></div>';
 			
             // Only show tabs if there is more than one tab
 
@@ -326,7 +326,12 @@ console.log(tabs);
 	     	window.location.hash = 'box-' + box_id;
 			}
 		 }
-	   });
+	   })).data( "autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li></li>" )
+                .data( "item.autocomplete", item )
+                .append( "<a>"+ item.label + "</a>" ) 
+                .appendTo( ul );
+        };
 	   
 	   $(".printer_tabs").colorbox({html: "<h1>Print Selection</h1><div class=\"printDialog\"><ul><li><a onclick=\"window.print();\" class=\"pure-button pure-button-topsearch\">Print Current Tab</a></li><li><a onclick=\"printView();\" class=\"pure-button pure-button-topsearch\">Print All Tabs</a></li></ul></div>", innerWidth:640, innerHeight:480});
 
