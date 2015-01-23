@@ -154,7 +154,7 @@ $add_dept_box = "<form id=\"new_department\" action=\"\" class=\"pure-form pure-
 </form>";
 
 $view_depts_box = "<ul>
-<li><a href=\"$PublicPath" . "/staff.php?letter=By Department\" target=\"_blank\">" . _("Staff by Department") . "</a></li>
+<li><a href=\"$PublicPath" . "staff.php?letter=By Department\" target=\"_blank\">" . _("Staff by Department") . "</a></li>
 </ul>";
 
 print feedBack($feedback);
