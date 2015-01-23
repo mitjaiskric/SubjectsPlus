@@ -359,7 +359,7 @@ include("includes/header_um.php");
 
 	<div class="pure-u-1 pure-u-lg-1-4 database-page sidebar-bkg">
 			 <div class="tip">
-				<h2>Need help <strong>now</strong>? <br /><a href="/ask-a-librarian/">Ask a Librarian</a>.</h2>
+				<h2>Need help <strong>now</strong>? <br /><a href="http://library.miami.edu/ask-a-librarian/">Ask a Librarian</a>.</h2>
 		      		<form id="tellus" action="<?php print $form_action; ?>" method="post" class="pure-form">
 			        <div class="talkback_form <?php print $tb_bonus_css; ?>">			          
 			          <p><strong><?php print _("Your comment:"); ?></strong><br />
