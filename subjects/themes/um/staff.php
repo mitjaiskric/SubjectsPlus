@@ -164,29 +164,37 @@ include("includes/header_um.php");
 
     //A-Z list scripts
     $rowcolor = $(".foo1 .footable-row-detail").prev(".evenrow");
-
     $('.foo1').trigger('footable_expand_first_row').addClass("evenrow");
 
-    $( ".foo1 .zebra.evenrow, .foo1 .zebra.evenrow td, .foo1 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo1 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          });
+    $("tr").on("click", function () {
+	    if ($(this).hasClass("evenrow")) {
+	
+	        $(this).next(".footable-row-detail").addClass("evenrow");
+	
+	    } else if ($(this).hasClass("oddrow")) {
+	
+	        $(this).next(".footable-row-detail").addClass("oddrow");
+	
+	    }
+	});
 
     
-
     //Bind functions for responsive/resizing A-Z
     $('.foo1').bind('footable_breakpoint', function() {
 
           $('.foo1').trigger('footable_expand_first_row');
           
-          $(".foo1 .footable-row-detail").addClass("evenrow");
-
-           $( ".foo1 .zebra.evenrow, .foo1 .zebra.evenrow td, .foo1 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo1 .footable-row-detail .footable-row-detail-cell");
-              }
-          });
+          $("tr").on("click", function () {
+		        if ($(this).hasClass("evenrow")) {
+		
+		            $(this).next(".footable-row-detail").addClass("evenrow");
+		
+		        } else if ($(this).hasClass("oddrow")) {
+		
+		            $(this).next(".footable-row-detail").addClass("oddrow");
+		
+		        }
+		    });
 
     });
      
@@ -200,50 +208,37 @@ include("includes/header_um.php");
     
 
     //Department scripts
-    $rowcolor2 = $(".foo2 .footable-row-detail").prev(".evenrow");
-
-    $( ".foo2 .evenrow, .foo2 .evenrow td, .foo2 .footable-toggle").on("click", function() {
-        if ($rowcolor2 = true){
-            $(".foo2 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-        }
-    });  
-
     $('.foo2').bind('footable_breakpoint', function() {        
-
-          $(".foo2 .footable-row-detail").addClass("evenrow");
-
-          $( ".foo2 .evenrow, .foo2 .evenrow td, .foo2 .footable-toggle").on("click", function() {
-              if ($rowcolor2 = true){
-                  $(".foo2 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          }); 
+			$("tr").on("click", function () {
+		        if ($(this).hasClass("evenrow")) {
+		
+		            $(this).next(".footable-row-detail").addClass("evenrow");
+		
+		        } else if ($(this).hasClass("oddrow")) {
+		
+		            $(this).next(".footable-row-detail").addClass("oddrow");
+		
+		        }
+		    });           
     });
 
 
     //Subject Librarians A-Z scripts
-    $rowcolor3 = $(".foo3 .footable-row-detail").prev(".evenrow");
-
-    $('.foo3').trigger('footable_expand_first_row');
-
-    $( ".foo3 .evenrow, .foo3 .evenrow td, .foo3 .footable-toggle").on("click", function() {
-        if ($rowcolor3 = true){
-            $(".foo3 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-        }
-    });
-
-
+    $('.foo3').trigger('footable_expand_first_row').addClass("evenrow"); 
 
     $('.foo3').bind('footable_breakpoint', function() {
 
-          $('.foo3').trigger('footable_expand_first_row');          
-
-          $(".foo3 .footable-row-detail").addClass("evenrow");
-
-          $( ".foo3 .zebra.evenrow, .foo3 .zebra.evenrow td, .foo3 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo3 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          });
+          $("tr").on("click", function () {
+			    if ($(this).hasClass("evenrow")) {
+			
+			        $(this).next(".footable-row-detail").addClass("evenrow");
+			
+			    } else if ($(this).hasClass("oddrow")) {
+			
+			        $(this).next(".footable-row-detail").addClass("oddrow");
+			
+			    }
+			});   
 
     });  
 

@@ -11,12 +11,55 @@ use SubjectsPlus\Control\Querier;
     
 $use_jquery = array("ui");
 
-$page_title = $resource_name;
+$page_title = "Search Results";
 $description = "The best stuff for your research.  No kidding.";
 $keywords = "research, databases, subjects, search, find";
 $noheadersearch = TRUE;
 
 $db = new Querier;
+
+function searchTerm () {
+	// Get the search term from the GET request
+	$term = scrubData($_POST['searchterm']);
+	return $term;
+}
+
+
+function searchResults($search_term) {
+	// Use curl to to search the autocomplete_data and decode the JSON returned
+	$curl = curl_init();
+	
+	curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'http://sp.library.miami.edu/subjects/includes/autocomplete_data.php?collection=guides&term=' . $search_term,
+    CURLOPT_USERAGENT => 'Mozilla/3.01 (compatible; AmigaVoyager/2.95; AmigaOS/MC680x0)'
+    ));
+
+    $resp = curl_exec($curl);	
+	curl_close($curl);
+
+	return json_decode($resp);
+		
+}
+
+function printResults($results) {
+	// Format the results
+
+	$results_display = "";
+	
+	foreach ($results as $result) {
+		$results_display .= "<ul class='search-terms'>";
+		$results_display .= "<li class='search-term'><a href='$result->url'>$result->label</a></li>" ;
+		$results_display .= "</ul>";
+	
+	}
+	
+	if($results_display) {} else {
+		$results_display .= "Sorry! There were no search results for that term.";
+	}	
+	
+	return $results_display;
+}
 
 // let's use our Pretty URLs if mod_rewrite = TRUE or 1
 if ($mod_rewrite == 1) {
@@ -33,14 +76,7 @@ if (isset($_GET['type']) && in_array(($_GET['type']), $guide_types)) {
     $view_type = "all";
 }
 
-///////////////////////
-// Have they done a search?
 
-$search = "";
-
-if (isset($_POST["search"])) {
-    $search = scrubData($_POST["search"]);
-}
 
 // set up our checkboxes for guide types
 $tickboxes = "<ul>";
@@ -136,71 +172,9 @@ include("includes/header_um.php");
 
 // put together our main result display
 
-//$guide_results = listGuides($search, $view_type);
-
-// This is the hack for CHC grouped guides; should be superceded in future //
-
-// Guides by Department
-// Set up here for CHC
-if (isset($_GET["d"])) {
-    $guide_results = "";
-  switch ($_GET["d"]) {
-    case "CHC":
-
-    $chc_guides = array(
-    array(
-        "title" => "Cuban Heritage Collection",
-        "description" => "An introduction to doing research at the Cuban Heritage Collection, including information about our services and accessing our materials.",
-        "url" => "http://libguides.miami.edu/chc?hs=a",
-        "image" => "chc-mural_75x75.jpg"
-    ),
-    array(
-        "title" => "CHC Music Guide",
-        "description" => "A guide to the music collections at the Cuban Heritage Collection.  Includes a spreadsheet with information about music scores in non-music collections.",
-        "url" => "http://sp.library.miami.edu/subjects/guide.php?subject=chcmusic",
-        "image" => "chc_beny_more.jpg"
-    ),
-    array(
-        "title" => "CHC Theater Guide",
-        "description" => "A guide to the theater collections at the Cuban Heritage Collection.  Includes links to archival and print materials related to our theater holdings.",
-        "url" => "http://sp.library.miami.edu/subjects/guide.php?subject=chctheater",
-        "image" => "chc_theater.jpg"
-    ),
-    array(
-        "title" => "Operation Pedro Pan Collections Guide",
-        "description" => "A guide to the collections related to the Pedro Pan exodus.  Contains links to oral histories of Pedro Pan children.",
-        "url" => "http://sp.library.miami.edu/subjects/guide.php?subject=pedropan",
-        "image" => "chc-mural_75x75.jpg"
-    )
-    );
-      $page_title = $page_title . ": Cuban Heritage Collection";
-      $intro = "";
-
-      foreach ($chc_guides as $key => $value) {
-        $guide_results .= "<div style=\"clear: both;\">
-          <img class=\"staff_photo\" align=\"left\" style=\"margin-bottom: 20px;\" title=\"" . $value["title"] . "\" alt=\"" . $value["title"] . "\" src=\"themes/um/chc-images/" . $value["image"] . "\" />
-          <a href=\"{$value["url"]}\">{$value["title"]}</a><br />
-          {$value["description"]}
-          <br style=\"\">
-          </div>"
-          ;
-      }
-
-
-    break;
-  }
-} else {
-  // Default dubious guide listing
-  $intro = "<p> These guides identify key resources in specific areas. Check out our <a href=\"http://libguides.miami.edu/\">complete list of interactive library subject guides</a>, tabbed for easy reference. You can also chat with our resource librarians or leave them a message.</p>";
-  //$guide_list = listGuides($search, $view_type);
-  $guide_results = listGuides($search, $view_type);
-}
-
-// End CHC hack
-
-
-  $our_results = "<div id=\"letterhead\">$tickboxes</div>
-  $guide_results";
+$search_results = searchResults(searchTerm());
+$guide_results = printResults($search_results);
+$our_results = $guide_results;
 
   //$layout = makePluslet("", $our_results, "","",FALSE);
 
@@ -224,9 +198,9 @@ if (isset($_GET["d"])) {
 
           <!-- start tip -->
           <div class="tip">
-            <h2><?php print _("Search Guides"); ?></h2>
+            <h2><?php print _("Search Databases"); ?></h2>
                   <?php
-                  $input_box = new CompleteMe("quick_search", "search_results.php", $proxyURL, "Quick Search", "guides", '');
+                  $input_box = new CompleteMe("searchterm", "search_results.php", $proxyURL, "Quick Search", "guides", '');
                   $input_box->displayBox();
                   ?>
           </div>
