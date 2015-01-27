@@ -1,7 +1,8 @@
 # Pretty URLs -- Uncomment to use
 RewriteEngine on
 RewriteBase /subjects/
-RewriteRule ^profile/([^/\.]+)/?$ staff_details.php?name=$1 [L]
+#RewriteRule ^profile/([^/\.]+)/?$ staff_details.php?name=$1 [L]
+RewriteRule ^profile/?([a-zA-Z0-9\[\]\.()+|_-]+)$ staff_details.php?name=$1 [L]
 RewriteRule ^([^/\.]+)/?$ guide.php?subject=$1 [L]
 RewriteRule ^([^/\.]+)/([^/\.]+)/?$ guide.php?subject=$1&source=$2 [L]
 

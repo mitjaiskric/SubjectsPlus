@@ -326,12 +326,7 @@ console.log(tabs);
 	     	window.location.hash = 'box-' + box_id;
 			}
 		 }
-	   })).data( "autocomplete" )._renderItem = function( ul, item ) {
-            return $( "<li></li>" )
-                .data( "item.autocomplete", item )
-                .append( "<a>"+ item.label + "</a>" ) 
-                .appendTo( ul );
-        };
+	   });
 	   
 	   $(".printer_tabs").colorbox({html: "<h1>Print Selection</h1><div class=\"printDialog\"><ul><li><a onclick=\"window.print();\" class=\"pure-button pure-button-topsearch\">Print Current Tab</a></li><li><a onclick=\"printView();\" class=\"pure-button pure-button-topsearch\">Print All Tabs</a></li></ul></div>", innerWidth:640, innerHeight:480});
 
