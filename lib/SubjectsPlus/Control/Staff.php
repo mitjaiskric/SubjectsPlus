@@ -591,14 +591,9 @@ print "<div class=\"pure-u-1-3\">";
 	
 	
 	if ($UM) { 
-	
-	if ($this->_staff_id != "") {
-      $our_password = "<p  ><a href=\"../includes/set_password.php?staff_id=" . $this->_staff_id . "\" id=\"reset_password\">" . _("The password is hidden.  Reset?") . "</a></p>
-        ";
-    } else {
+
       $our_password = "<input type=\"hidden\" name=\"password\" size=\"20\" value=\"Ttytpyl!@121!\" class=\"required_field\" /><br />
 		<p style=\"font-size: smaller\">The password for the user is their myUM password.</p>";
-    }
 	
 	} else {
 	
@@ -653,7 +648,7 @@ print "<div class=\"pure-u-1-3\">";
     <input type=\"text\" name=\"city\" id=\"city\" class=\"pure-input-1 $city_required\" value=\"" . $this->_city . "\" /></div>
     <div style=\"float: left; margin-right: 1em;\"><label for=\"state\">" . _("State") . "</label>
     <input type=\"text\" name=\"state\" id=\"state\" class=\"pure-input-1 $state_required\" value=\"" . $this->_state . "\" /></div>
-    <div style=\"float: left;\"><label for=\"zip\">" . _("Zip") . "</label>
+    <div style=\"float: left;margin-right: 1em;\"><label for=\"zip\">" . _("Zip") . "</label>
     <input type=\"text\" name=\"zip\" id=\"zip\" class=\"pure-input-1 $zip_required\" value=\"" . $this->_zip . "\" /></div>
     <br />
     <div style=\"float: left; margin-right: 1em;\"><label for=\"state\">" . _("Home Phone") . "</label>
@@ -716,6 +711,7 @@ public function outputLatLongForm() {
 
     global $require_user_columns;
     global $omit_user_columns;
+	global $UM;
 
     $isPersonalOmitted = in_array( _( "personal_information" ) , $omit_user_columns );
     $isEmergencyContactOmitted = in_array( _( "emergency_contact" ) , $omit_user_columns );
@@ -737,7 +733,7 @@ public function outputLatLongForm() {
         echo "<input type=\"hidden\" name=\"street_address\" id=\"street_address\" value=\"" . $this->_street_address . "\" />\n";
         echo "<input type=\"hidden\" name=\"city\" id=\"city\" value=\"" . $this->_city . "\" />\n";
         echo "<input type=\"hidden\" name=\"state\" id=\"state\" value=\"" . $this->_state . "\" />\n";
-        echo "<input type=\"hidden\" name=\"zip\" id=\"zip\" value=\"" . $this->_zip . "\" />\n";
+        echo "<input type=\"hidden\" name=\"zip\" id=\"zip\" value=\"" . $this->_zip . "\" /> \n";
         echo "<input type=\"hidden\" name=\"home_phone\" id=\"home_phone\" value=\"" . $this->_home_phone . "\" />\n";
         echo "<input type=\"hidden\" name=\"cell_phone\" id=\"cell_phone\" value=\"" . $this->_cell_phone . "\" />\n";
         echo "<input type=\"hidden\" name=\"lat_long\" id=\"lat_long\"value=\"" . $this->_lat_long . "\" />\n";
@@ -775,8 +771,16 @@ public function outputLatLongForm() {
 
     print "<div class=\"pure-u-1-3\">";
 
-    $password_update = "<p><a href=\"../includes/set_password.php?staff_id=" . $this->_staff_id . "\" id=\"reset_password\">" . _("The password is hidden.  Reset?") . "</a></p>";
+	if ($UM) { 
 
+      $password_update = "<input type=\"hidden\" name=\"password\" size=\"20\" value=\"Ttytpyl!@121!\" class=\"required_field\" /><br />
+		<p style=\"font-size: smaller\">The password for the user is their myUM password.</p>";
+	
+	} else {
+	
+		$password_update = "<p><a href=\"../includes/set_password.php?staff_id=" . $this->_staff_id . "\" id=\"reset_password\">" . _("The password is hidden.  Reset?") . "</a></p>";
+
+	}
     makePluslet(_("Change Password?"), $password_update, "no_overflow");
 
     $saver = "<input type=\"submit\" name=\"submit_record\" class=\"pure-button pure-button-primary\" value=\"" . _("Update Now!") . "\" />";

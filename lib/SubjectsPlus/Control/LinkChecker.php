@@ -449,10 +449,12 @@ class LinkChecker {
 			}
 			$error['img_src'] = $AssetPath . 'images/icons/info2.png';
 			$error['row_style'] = ' style="background: #ffff33;"';
+			$error['text_img'] = _("Unsure");
 		}
 		else
 		{
 			$error['img_src'] = $AssetPath . 'images/icons/accept.png';
+			$error['text_img'] = _("OK");
 		}
 
 		curl_close($rscCurl);
@@ -502,7 +504,7 @@ class LinkChecker {
 					}
 
 					echo "<a href=\"$link[1]\" target=\"_blank\">$link[2]</a></td>\n" .
-							"<td><img src=\"$error[img_src]\" /></td>\n" .
+							"<td><strong style=\"font-size: 2em;\">$error[text_img]</strong></td>\n" .
 							"<td>$error[message]</td>\n";
 					echo "</tr>\n";
 				}

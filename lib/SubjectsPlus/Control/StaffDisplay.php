@@ -35,7 +35,12 @@ class StaffDisplay {
 			
         $r = $db->query($q);
 
-        $items = "<table width=\"100%\" class=\"footable\">";
+        $items = "<table width=\"100%\" class=\"footable foo1\">";
+		
+		$items .= "<thead><tr><th data-sort-ignore=\"true\">&nbsp;</th>
+          <th data-sort-ignore=\"true\" data-hide=\"phone,mid\">&nbsp;</th>
+          <th data-sort-ignore=\"true\">&nbsp;</th>
+          <th data-sort-ignore=\"true\" data-hide=\"phone,\">&nbsp;</th></tr></thead>";
 
         $row_count = 0;
         $colour1 = "oddrow";
@@ -68,12 +73,8 @@ class StaffDisplay {
             $link_to_details = "staff_details.php?name=" . $name_id[0];
           }
 
-          $items .= "<thead><tr><th data-sort-ignore=\"true\">&nbsp;</th>
-          <th data-sort-ignore=\"true\" data-hide=\"phone,mid\">&nbsp;</th>
-          <th data-sort-ignore=\"true\">&nbsp;</th>
-          <th data-sort-ignore=\"true\" data-hide=\"phone,\">&nbsp;</th></tr></thead>
-          <tr class=\"$row_colour\">
-		      <td class=\"$row_colour\"><span class=\"staff_contact\">";
+          $items .= "<tr class=\"$row_colour zebra\">
+		      <td class=\"$row_colour staff-name-row\"><span class=\"staff_contact\">";
           if ($print_display != 1) {
             $items .= "<a href=\"$link_to_details\">$lname, $fname</a>";
           } else {
@@ -82,7 +83,7 @@ class StaffDisplay {
           
           $items .= "</span></td>
 			<td class=\"$row_colour\">$title $assoc_subjects</td>
-			<td class=\"$row_colour\">$tel_prefix$tel </td>
+			<td class=\"$row_colour staff-tel-row\">$tel_prefix$tel </td>
 			<td class=\"$row_colour\"><a href=\"mailto:$email\">$email</a></td></tr>";
 
           $row_count++;
@@ -307,7 +308,7 @@ class StaffDisplay {
           }
           $items .= "<a href=\"$linky\">$psubject</a>";
           $items .= "</td>";
-          $items .= "<td>";
+          $items .= "<td class=\"staff-name-row\">";
 
           if ($mod_rewrite == 1) {
             $linky = "/subjects/profile/" . $name_id[0];

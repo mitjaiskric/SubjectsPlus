@@ -260,13 +260,13 @@ class DbHandler {
 	}
 
 	function displaySubjects() {
-
+	    $db = new Querier;	
 		$q = "SELECT subject, subject_id FROM subject WHERE active = '1' ORDER BY subject";
 		$main_alternate_titles = $db->query($q);
 
 		// check row count for 0 returns
 
-		$num_rows = mysql_num_rows($main_alternate_titles);
+		$num_rows = count($main_alternate_titles);
 
 		if ($num_rows == 0) {
 			return "<div class=\"no_results\">" . _("Sorry, there are no results at this time.") . "</div>";

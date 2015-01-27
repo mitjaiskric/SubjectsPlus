@@ -30,29 +30,20 @@ class Pluslet_5 extends Pluslet {
         // public vs. admin
         parent::establishView($view);
         // example form action:  http://icarus.ithaca.edu/cgi-bin/Pwebrecon.cgi?
-        $this->_body = '
-            <form action="" method="get" name="querybox" id="querybox">
-            <strong>Search for</strong>
-            <input type="hidden" value="local" name="DB" />
-            <input maxlength="800" size="25" name="Search_Arg" class="search_smaller" />
-            <input type="hidden" value="all of these" name="BOOL1" />
-            <strong>in </strong>
-            <select name="Search_Code" class="search_smaller">
-            <option value="CMD*">Keyword (use and/or)</option>
-            <option value="FT*">Keyword Anywhere</option>
-            <option value="TALL">Title (omit initial a, an, the)</option>
-
-            <option value="JALL">Journal Title (omit initial a, an, the)</option>
-            <option value="NAME_">Author (last name, first name)</option>
-            <option value="AUTH_">Author/Composer (sorted by title)</option>
-            <option value="SUBJ_">Subject (person, place, thing)</option>
-            <option value="CALL_">Call Number</option>
-            </select>
-            <input type="hidden" value="1" name="HIST" />
-            <input type="hidden" name="HIST" value="1" />
-            <input name="SUBMIT" type="submit" value="Go!" class="search_smaller" />
-            <input type="hidden" value="25" name="CNT" />
-            </form>
+        $this->_body = '<form action="http://catalog.library.miami.edu/search/" method="get" name="search" id="search">
+        <input type="hidden" id="iiiFormHandle_1">
+        <select name="searchtype" id="searchtype">
+          <option value="X" selected="selected">Keyword</option>
+          <option value="t">Title</option>
+          <option value="a">Author</option>
+          <option value="d">Subject</option>
+        </select>
+        <input type="hidden" name="SORT" id="SORT" value="D" />
+        <input maxlength="75" name="searcharg" size="20" />
+        <input type="hidden" id="iiiFormHandle_1"/>
+        <input name="Search" type="submit" id="Search" value="Search" />
+      </form>
+      <p style="margin: 1em  0 0 1em;">See also <a href="http://catalog.library.miami.edu/search/X">advanced search</a></span></p>
             ';
 
 
