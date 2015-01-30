@@ -9,7 +9,7 @@
 use SubjectsPlus\Control\CompleteMe;
 use SubjectsPlus\Control\Querier;
 
-use SubjectsPlus\Control\LibguidesApi;
+use SubjectsPlus\Control\LibGuidesSubjectImport;
     
 $use_jquery = array("ui");
 
@@ -145,47 +145,21 @@ include("includes/header_um.php");
 
   //$layout = makePluslet("", $our_results, "","",FALSE);
 
-  $lgApi = new LibguidesApi();
+    $subjectImporter = new LibGuidesSubjectImport();
+    $subjectImporter->run();
 
-  $curlStr = $lgApi->getSubjects();
-
-
-    $doc = new DOMDocument();
-    $doc->loadHTML($curlStr);
-
-    // all links in document
-    $links = array();
-    $arr = $doc->getElementsByTagName("a"); // DOMNodeList Object
-    foreach($arr as $item) { // DOMElement Object
-        $href =  $item->getAttribute("href");
-        $text = trim(preg_replace("/[\r\n]+/", " ", $item->nodeValue));
-        $links[] = array(
-            'href' => $href,
-            'text' => $text
-        );
-
+    $rows = $subjectImporter->get_subject_subject();
+    $i = 1;
+    foreach($rows as $row) {
+        echo $i++ ." => parent_id => ".$row['subject_parent']." child_id => ".$row['subject_child']."<br>";
     }
-
-
-
-    $lgSubjects = "";
-    foreach($links as $item) {
-        $lgSubjects .= "<a href='{$item['href']}'>{$item['text']}</a>"."<br>";
-
-    }
-
-
-
-    //get sp3 subjects
-    $q4 = "select subject, shortform, redirect_url from subject where active = '0' and redirect_url = NULL";
-    $rows = $db->query($q4);
-    //var_dump($rows);
-
+    /*
     $spSubjects = "";
     foreach($rows as $row) {
         $spSubjects .= "<a href='{$row['redirect_url']}'>{$row['subject']}</a>"."<br>";
 
     }
+    */
 
 
   $subjects = "<div id=\"letterhead\">$tickboxes</div>
