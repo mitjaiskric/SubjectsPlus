@@ -230,7 +230,7 @@ class LibGuidesSubjectImport {
     $exists = false;
 
     //check by count
-    $check = "SELECT COUNT(*) FROM subject_subject WHERE subject_parent = '$parent_id' AND subject_child = '$child_id'";
+    $check = $this->db->query("SELECT COUNT(*) FROM subject_subject WHERE subject_parent = '$parent_id' AND subject_child = '$child_id'");
 
     //if equal to or greater than 1 set to true
     if($check[0][0] >=  '1') {
@@ -262,12 +262,9 @@ class LibGuidesSubjectImport {
    * @return array
    */
   public function get_subject_subject() {
+    $rows = $this->db->query("SELECT * FROM subject_subject");
+    return $rows;
 
-    $sth = $this->db->prepare("SELECT * FROM subject_subject");
-    $sth->execute();
-    $result = $sth->fetchAll();
-
-    return $result;
   }
 
   /**
@@ -412,6 +409,7 @@ class LibGuidesSubjectImport {
   protected function import_new_libguides() {
     //prepare import
     $payload = $this->prepare_payload_for_import();
+    //var_dump($payload);
 
     //insert new libguides into subjectsplus subject table
     $this->insert_libguide_into_subjectsplus($payload);
