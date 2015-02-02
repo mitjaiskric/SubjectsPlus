@@ -99,13 +99,28 @@ class LibGuidesSubjectImport {
     //return the transfer as a string
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-    // $curlStr contains the output string
-    $curlStr = curl_exec($ch);
 
-    // close curl resource to free up system resources
-    curl_close($ch);
+    if(!curl_exec($ch)) {
+      //let someone know insert failed - send a msg
+      $subject_line = "LibGuides API Failed ";
+      $msg = curl_error($ch);
 
-    return $curlStr;
+      // close curl resource to free up system resources
+      curl_close($ch);
+
+      $this->mailmsg($this->getToAddress(), $this->getFromAddress(), $subject_line, $msg);
+
+      exit();
+    } else {
+      // $curlStr contains the output string
+      $curlStr = curl_exec($ch);
+
+      // close curl resource to free up system resources
+      curl_close($ch);
+
+      return $curlStr;
+    }
+
   }
 
 
@@ -179,8 +194,8 @@ class LibGuidesSubjectImport {
    * @return mixed
    */
   protected function make_subject_shortform($value = null) {
-    // Remove all but alphanumeric characters and strip the apostrophes and spaces
-    $shortform = preg_replace("/[^a-zA-Z0-9]+/", "_", str_replace("'", "", $value ));
+    // Remove all but alphanumeric characters and accent marks and strip the apostrophes and spaces
+    $shortform = preg_replace("/[^\p{L}a-zA-Z0-9]+/u", "_", str_replace("'", "", $value ));
     return $shortform;
   }
 
@@ -214,6 +229,14 @@ class LibGuidesSubjectImport {
 
       //insert success - retrieve last inserted id
       $new_guide_id = $this->db->last_id();
+    } else {
+
+      //let someone know insert failed - send a msg
+      $subject_line = "LibGuides Insert Failed";
+      $content_line = $subject."  ".$redirect_url;
+      $content_line .= print_r($this->db->errorInfo());
+      $this->mailmsg($this->getToAddress(), $this->getFromAddress(), $subject_line, $content_line);
+
     }
     //return last inserted id
     return $new_guide_id;
@@ -253,6 +276,19 @@ class LibGuidesSubjectImport {
                       VALUES (" . $this->db->quote($parent_id) . "," . $this->db->quote($child_id) . ")")) {
       //insert success - retrieve last inserted id
       $id = $this->db->last_id();
+    } else {
+      //let someone know insert failed - send a msg
+      $subject_line = "LibGuides Parent/Child Insert Failed";
+      $content_line = "parent_id => ".$parent_id." child_id => ".$child_id;
+
+      $errors = array();
+      foreach($this->db->errorInfo() as $e) {
+        $errors[] = $e;
+      }
+
+      $content_line .= $errors;
+      $this->mailmsg($this->getToAddress(), $this->getFromAddress(), $subject_line, $content_line);
+
     }
 
     return $id;
@@ -262,7 +298,8 @@ class LibGuidesSubjectImport {
    * @return array
    */
   public function get_subject_subject() {
-    $rows = $this->db->query("SELECT * FROM subject_subject");
+    $rows = $this->db->query("SELECT subject_subject.subject_parent, subject_subject.subject_child, subject.subject FROM subject_subject
+INNER JOIN subject ON subject_subject.subject_parent=subject.subject_id");
     return $rows;
 
   }
@@ -335,7 +372,7 @@ class LibGuidesSubjectImport {
         } elseif ($item['class'] == 'guide') {
           $data['type'] = 'Topic';
         } else {
-          $data['type'] = 'Subject';
+          $data['type'] = 'Topic';
         }
 
         //check to see if guide exists
@@ -361,7 +398,7 @@ class LibGuidesSubjectImport {
             if($data['type'] == 'Category') {
               $parent_id = $new_guide_id;
               $child_id = $new_guide_id;
-            } elseif($data['type'] == 'Topic' or $data['type'] == 'Subject') {
+            } elseif($data['type'] == 'Topic') {
               $child_id = $new_guide_id;
             }
 
@@ -373,6 +410,7 @@ class LibGuidesSubjectImport {
             $content_line = "New LibGuide inserted into SubjectsPlus subject table. <br>";
             $content_line .= "<a href='{$data['redirect_url']}'>{$data['subject']}</a> in LibGuides <br>";
             $content_line .= "The guide is set to inactive. Please check the settings. <br>";
+            $content_line .= "Also make sure the Shortform is concise. <br>";
             $content_line .= "<a href='{$new_guide_url}'>{$data['subject']}</a> in SubjectsPlus admin";
             //$this->mailmsg($this->getToAddress(), $this->getFromAddress(), $subject_line, $content_line);
           }
@@ -387,7 +425,7 @@ class LibGuidesSubjectImport {
           if($data['type'] == 'Category') {
             $parent_id = $guide_id[0]['subject_id'];
             $child_id = $guide_id[0]['subject_id'];
-          } elseif($data['type'] == 'Topic' or $data['type'] == 'Subject') {
+          } elseif($data['type'] == 'Topic') {
             $child_id = $guide_id[0]['subject_id'];
           }
 
@@ -409,7 +447,6 @@ class LibGuidesSubjectImport {
   protected function import_new_libguides() {
     //prepare import
     $payload = $this->prepare_payload_for_import();
-    //var_dump($payload);
 
     //insert new libguides into subjectsplus subject table
     $this->insert_libguide_into_subjectsplus($payload);
