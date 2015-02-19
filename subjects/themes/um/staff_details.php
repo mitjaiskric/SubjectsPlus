@@ -106,7 +106,7 @@ if ($staffmem[0][8] != "") {
     foreach ($r as $mysubs) {
 
         if ($mod_rewrite == 1) {
-            $linky = $mysubs[2];
+	    $linky = "../" . $mysubs[2]; // agd revised feb 19, 2015 to deal with new profile subfolder
         } else {
             $linky = "guide.php?subject=" . $mysubs[2];
         }
