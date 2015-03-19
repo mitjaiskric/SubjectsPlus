@@ -29,17 +29,29 @@ class DbHandler {
 	
                 // $qualifier is the databases.php?letter= GET value	
  
+                // Sometimes it will be databases.php?letter=G or more specific like databases.php?letter=bysub&subject_id=6
 		switch ($qualifier) {
+
 		case "Num":
-			$condition1 = "WHERE left(title, 1)  REGEXP '[[:digit:]]+'";
-	
+
+                        // This condition is for getting a list of databases that start with numbers like 19th Century History.
+                        // It also will pick up cases where the number is spelled out like Nineteenth if there is
+                        // an alternate title with a number in it 
+			$condition1 = "WHERE left(title, 1)  REGXP '[[:digit:]]+'";
+
 			break;
 		case "All":
+                        // All databases entries that have a title 
+
 			$condition1 = "WHERE title != ''";
 		
 			break;
 		case "bysub":
- if (isset($subject_id)) {
+
+                        // This condition is for when you want to get a list of all recources that are associated with a specific subject
+                        // like Africana Studies or Biology
+                        
+                        if (isset($subject_id)) {
 				//get title ids in pluslets' resource token connected to subject
 				$lobjGuide = new Guide($subject_id);
 				$lobjTitleIds = $lobjGuide->getRelatedTitles();
@@ -47,33 +59,36 @@ class DbHandler {
 				$condition1 = "WHERE (subject_id = $subject_id";
 				$condition1 .= count($lobjTitleIds) > 0 ? "\nOR t.title_id IN (" . implode( ',', $lobjTitleIds) . ")" : "";
 				$condition1 .= ")";
-				$condition2 = "WHERE subject_id = $subject_id";
+			
 			} else {
 				$condition1 = "WHERE title LIKE " . $db->quote("%" . $qualifier . "%");
-				$condition2 = "WHERE alternate_title LIKE " . $db->quote("%" . $qualifier . "%") . "AND type = 'Subject'";
+			
 			}
 			break;
 		case "bytype":
- 
+                        
+                        // This condition is called "By Format" on the frontend interface. It takes care of options like getting
+                        // a list of all databases that have music scores or conferences proceedings
+                        // SubjectsPlus stores this information in the ctags column of the title table 
+
 			if (isset($_GET["type"])) {
 				$condition1 = "WHERE ctags LIKE " . $db->quote(scrubData("%" . $_GET["type"] . "%"));
-			
 			}
  
 			break;
+
 		case "search":
+
+                        // A basic search, that has been superceded by the autocomplete search, but it's still here in the case that
+                        // someone is using this to power a search on their site
+
 			$condition1 = "WHERE title LIKE " . $db->quote("%" . $qualifier . "%");
-			// If you uncomment the next line, it will search description field
-			$condition1 = "WHERE (title LIKE " . $db->quote("%" . $qualifier . "%") . " OR description LIKE " . $db->quote("%" . $qualifier . "%");
-		
- 
 			break;
 			
 		default:
-			// This is the simple output by letter and also the search
+			// This is the simple output by letter alphabetical search
 			
 			if (strlen($qualifier) == 1) {
-				
 				// Is like the first letter
 				$condition1 = "WHERE  left(title,1) = '$qualifier'";
 				
@@ -82,17 +97,16 @@ class DbHandler {
 			}
 			
 			if ($description_search == 1) {
-				// If you uncomment the next line, it will search description field
+		        // If you uncomment the next line, it will search description field
 			$condition1 = "WHERE (title LIKE " . $db->quote("%" . $qualifier . "%") . " OR description LIKE " . $db->quote("%" . $qualifier . "%") . ")";
-			}
- 
-		
-			
+			}			
 		}
 
-                
+                // This escapes the search value and adds wildcards 
             	$first_letter = $db->quote("%$qualifier%");
 	
+
+                 // This query will return a set of results based on the main title of the resource
 		$main_title_query = "SELECT distinct left(t.title,1) as initial, t.title as newtitle, t.description, location, access_restrictions, t.title_id as this_record,eres_display, display_note, pre, citation_guide, ctags, helpguide
 			FROM title as t
 			INNER JOIN location_title as lt
@@ -109,6 +123,7 @@ class DbHandler {
 			AND eres_display = 'Y'
 			ORDER BY newtitle";
  
+                // This query will return a set of results based on the alterate title of the resource
 		$alternate_title_query = "SELECT distinct left(t.alternate_title,1) as initial, t.alternate_title as newtitle, t.description, location, access_restrictions, t.title_id as this_record,eres_display, display_note, pre, citation_guide, ctags, helpguide
 			FROM title as t
 			INNER JOIN location_title as lt
@@ -126,8 +141,9 @@ class DbHandler {
 		                             
 	                AND eres_display = 'Y'
 			ORDER BY newtitle";
- 
-	$num_alt_title_query = "SELECT distinct LEFT(t.alternate_title,1) as initial, t.title as newtitle, t.description, location, access_restrictions, t.title_id as this_record,eres_display, display_note, pre, citation_guide, ctags, helpguide
+
+            // This query will handle cases where there is a resource that has a number in the title 
+	    $num_alt_title_query = "SELECT distinct LEFT(t.alternate_title,1) as initial, t.title as newtitle, t.description, location, access_restrictions, t.title_id as this_record,eres_display, display_note, pre, citation_guide, ctags, helpguide
 			FROM title as t
 			INNER JOIN location_title as lt
 			ON t.title_id = lt.title_id
@@ -143,43 +159,31 @@ class DbHandler {
                         OR left(title, 1) REGEXP '[[:digit:]]+'
 	                AND eres_display = 'Y'
 			ORDER BY newtitle";
- 
-		$main_titles = $db->query($main_title_query);
-		$alternate_titles = $db->query($alternate_title_query);
-		$num_titles = $db->query($num_alt_title_query); 
-            
-      
-                if ($qualifier == "Num") {
-                 
-                    $main_alternate_titles = $num_titles;
 
+                if ($qualifier == "Num") {
+                    $num_titles = $db->query($num_alt_title_query); 
+                    // In the case of the number list, we don't need to combine the main and alternate titles 
+                    $main_alternate_titles = $num_titles;
+            
                 } else {
-                   
+
+                    // Perform those queries 
+		    $main_titles = $db->query($main_title_query);
+		    $alternate_titles = $db->query($alternate_title_query);
+                    // For all the other cases, we need to merge the two results so that the lists will have both in them
                     $main_alternate_titles = array_merge_recursive($main_titles , $alternate_titles);
                 }
-		
-		// Check to see if the qualifier is not a single letter like "C", it could be "All" or "Audio"
-		if(strlen($first_letter) === 1) {
-			
-		// Remove results from array that don't have the currently selected initial
-		
-		foreach ($main_alternate_titles as $index => $value) {
-		
-			if ($value['initial'] != $first_letter) {
-				
-				unset($main_alternate_titles[$index]);
-				
-			} 
-		}
-		
-		}
-		
+
+                // Check for cases where there are no results 
+
 		$num_rows = count($main_alternate_titles);
  
 		if ($num_rows == 0) {
 			return "<div class=\"no_results\">" . _("Sorry, there are no results at this time.") . "</div>";
 		}
- 
+
+                // Everything below this point controls how the database lists appear
+
 		// prepare 	header
 		$items = "<table width=\"98%\" class=\"item_listing trackContainer\">";
  
@@ -193,8 +197,6 @@ class DbHandler {
  
 			$patterns = "/'|\"/";
 			$main_alternate_titleseplacements = "";
-			
-			
 			
 			$item_title = $myrow[1];
 			if ($myrow["pre"] != "") {
