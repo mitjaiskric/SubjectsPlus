@@ -1,0 +1,65 @@
+ToDo:
+04. 02. 2015
+vsebine iz moodla
+odpiranje novih linkov _BLANK
+zavihki za katalog, za revije,...
+vrtenje naslovnic
+
+Problemi:
+javascript za vrtenje naslovnic
+database - nič http://1268.gvs.arnes.si/sp2/subjects/databases.php
+
+zavihki -> v 3.0
+css -> global file
+
+Done:
+04. 02. 2015
+vsebine iz moodla
+odpiranje novih linkov _BLANK (http://www.subjectsplus.com/wiki/index.php?title=Customization_2.0#More_Customizations)
+
+12. 02. 2015
+Težava z Chrome!
+pravice owner apache all
+
+13. 02. 2015
+IE: napaka 500
+Mozilla:
+There was a problem connecting to the database.
+Are you sure that the database connection information is correct?
+This is the detailed error:
+Connection failed: SQLSTATE[28000] [1045] Access denied for user 'apache'@'localhost' (using password: NO)
+mysql user apache no password omejene pravice brez drop
+
+MySQL Hostname "localhost", ne 127.0.0.1
+
+install uspel: odpakirane datoteke od Kirarja, prenesene z winscp, potem v Spletnem
+Raziskovalcu (Ajenti) spremenjene pravice owner apache all
+
+14. 02. 2015
+Problem je bil v installerju v zip datoteki!
+owner apache samo za 
+/control/includes/config-default.php --- readable by php to make config.php
+/control/includes/ --- writable by php to write config.php
+/subjects/.htaccess --- writable by php to write .htaccess
+/api/.htaccess --- writable by php to write .htaccess
+/assests/users/ --- writable by php to make new user folders
+/assets/images/video_thumbs --- writable by php to add new video thumbnails
+
+23. 02. 2015
+iskalniki, js
+
+08. 03. 2015
+header.php
+
+12. 03. 2015
+imamo domeno vodici.pef.uni-lj.si
+redirect iz index strani na http://vodici.pef.uni-lj.si/sp/subjects/
+preverjanje vseh relativnih povezav v glavi, css, slikah, internih linkih
+
+16. 03. 2015
+Končano!
+
+23. 03. 2015 
+Objavljeno http://vodici.pef.uni-lj.si
+
+prevod, index iskanje ne dela, dodati auto nove vodiče
