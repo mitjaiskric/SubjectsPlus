@@ -28,7 +28,7 @@ class Pluslet_1 extends Pluslet {
             $this->_subject_id = 1;
         }
 
-        $this->_title = _("All Items by Source");
+        $this->_title = _("Vsi viri");
 
         $this->_pluslet_id_field = "pluslet-" . $this->_pluslet_id;
     }
@@ -143,11 +143,11 @@ class Pluslet_1 extends Pluslet {
 
             switch ($myrow["format"]) {
                 case "1": // web
-                    $first_line = "<a style=\"text-decoration: underline\" href=\"$final_url\" $target>$label</a> $pub_icons<br />";
+                    $first_line = "<a style=\"text-decoration: underline\" href=\"$final_url\" target=\"_blank\">$label</a> $pub_icons<br />";
 
                     break;
                 case "2": // print
-                    $first_line = "<em>$label</em><br /><strong>" . _("Print Location:") . "</strong> $final_url $pub_icons<br />";
+                    $first_line = "<em>$label</em><br /><strong>" . _("Dostopno samo v tiskani obliki, lokacija:") . "</strong> $final_url $pub_icons<br />";
                     if ($myrow["8"] == $last_title_id) {
                         $blurb = "";
                         $res_class = "dbresults-inset";
@@ -157,8 +157,7 @@ class Pluslet_1 extends Pluslet {
 
                 case "3": // print with url
                     $first_line = "<em>$label</em><br /><strong>" . _("Print Location:") . "</strong>
-                    <a style=\"text-decoration: underline\" href=\"$final_url\" $target>" . $myrow["call_number"] . "</a> $pub_icons<br />";
-                    if ($myrow["8"] == $last_title_id) {
+                     <a style=\"text-decoration: underline\" href=\"$final_url\" target=\"_blank\">" . $myrow["call_number"] . "</a> $pub_icons<br />";                    if ($myrow["8"] == $last_title_id) {
                         $blurb = "";
                         $res_class = "dbresults-inset";
                     }
