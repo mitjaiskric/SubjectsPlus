@@ -43,11 +43,15 @@ $v2styles = TRUE;
     <div id="header_inner_wrap">
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-5">
-                <a href="<?php print $PublicPath; ?>"><img src="<?php print $AssetPath; ?>images/public/logo.png" alt="Home Page" /></a>
+                <a href="http://vodici.pef.uni-lj.si"><img src="<?php print $AssetPath; ?>images/public/logo.png" alt="Home Page" /></a>
                 
             </div>
             <div class="pure-u-1 pure-u-md-4-5">
                 <?php if (isset($v2styles)) { print "<h1>$page_title</h1>"; } ?>
+				<!--PeF menu-->
+				<br />
+				<div id="headlinks"><a href="../">Vsi vodiči</a> | <a href="http://www.pef.uni-lj.si/knjiznica">Novice</a> | <a href="http://ucilnica.pef.uni-lj.si/course/index.php?categoryid=85">Knjižnica v Spletni učilnici</a> | <a href="../guide.php?subject=komentar">Komentar</a> | <a href="../guide.php?subject=pomoč">Pomoč</a>
+				</div>
             </div>
         </div>
     </div>
