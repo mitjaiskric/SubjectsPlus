@@ -13,7 +13,7 @@ use SubjectsPlus\Control\Search;
 use SubjectsPlus\Control\CompleteMe;
 
 
-$page_title = "Search Results";
+$page_title = "Iskanje";
 
 $use_jquery = array("ui"); 
 
@@ -89,11 +89,11 @@ if (isset($_POST["searchterm"])) {
 	        }
 	    }
 
-$subtitle = _("Search Results for ") . $_POST['searchterm'];
+$subtitle = _("Rezultati za ") . $_POST['searchterm'];
 
 } else {
-	$subtitle = _("No search term entered");
-	$search_result =  _("<p>Please search for something with the box above.</p>");
+	$subtitle = _("NiÄŤesar niste vpisali");
+	$search_result =  _("<p>Prosimo vpiĹˇite nekaj ÄŤrk.</p>");
 }
 ?>
 
@@ -102,7 +102,7 @@ $subtitle = _("Search Results for ") . $_POST['searchterm'];
 
   <div class="pluslet no_overflow">
     <div class="titlebar">
-      <div class="titlebar_text"><?php print _("Search Subject Guides, Database Records, Staff List, FAQs, etc."); ?></div>
+      <div class="titlebar_text"><?php print _("PoiĹˇÄŤite raziskovalne vodiÄŤe, podatkovne zbirke,..."); ?></div>
       <div class="titlebar_options"></div>
     </div>
     <div class="pluslet_body">
