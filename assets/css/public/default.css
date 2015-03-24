@@ -4,7 +4,7 @@
 * {padding: 0; margin: 0;}
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;font-weight: inherit;font-style: inherit;font-size: 100%;font-family: inherit;vertical-align: baseline;}
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;font-weight: inherit;font-style: inherit;font-size: 100%;font-family:"Arial";vertical-align: baseline;}
 
 /* Tables still need 'cellspacing="0"' in the markup. */
 table { border-collapse: separate; border-spacing: 0; }
@@ -22,7 +22,6 @@ a img { border: none; }
 
 /* jQuery UI overrides */
 .ui-widget {
-       font-family: sans-serif;
 }
 
 .ui-widget-header {
@@ -37,7 +36,7 @@ body {
     text-align: left;
     line-height: 1.5em;
     color: #000;
-    background: url("../../images/grid.png") repeat scroll 0 0 #FFFFFF;
+    background: #FFFFFF;
 }
 
 html,
@@ -49,40 +48,38 @@ body {
 
 a,
 a:link  {
-    color: #40659B;
+    color: #5A8282;
 }
 
 a:visited {
-    color: #551A8B;
+    color: #5A8282;
 }
 
 a:hover {
-    color: #cc6666;
+    color: #B4162C;
 }
-
+/* naslov spremenjen*/
 h1 {
-    color: #333333;
-    font-family:sans-serif;
-    font-size: 1.8em;
-    font-weight: bold;
-    padding: 0.5em 0 1em;
-    text-shadow: 0 2px 3px #CCCCCC;
-    margin: .5em 0 1em 0em;    
+    color: #B4162C;
+    font-family:"Arial";
+    font-size: 2em;
+    font-weight: 100;
+    padding: 1 1em 1 0; 
+/*  text-shadow: 0 2px 3px #CCCCCC; */
+    margin: 3 1 1 0;    
 }
 
 h2 {
     font-family:sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 1px;
-    color: #333;
+    font-size: 2em;
+    font-weight: bold;
+    color: #5A8282;
     font-size: 1.3em;
 }
 
 h3 {
-    font-family:sans-serif;
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    color: #6F6F6F;
+    color: #0072BC;
+    font-family: "Times New Roman", Georgia, Serif;
 }
 
 em {font-style: italic;}
@@ -119,18 +116,19 @@ img {
 
 
 /* Header area */
+/*viĹˇji header */
 
 #header {
     background: #fff;
-    height: 3em;
+    height: 6em; 
     padding: 1em;
-    margin: 0 0 2em 0;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    margin: 0 0 1em 0;
+   /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.1); */
 }
 
 #header_inner_wrap {
     text-align: left;
-    padding: 0;
+    padding: 1 0 2em 0;
     margin: 0 auto;
     width: 100%;
     background-color: #transparent;
@@ -138,7 +136,22 @@ img {
     max-width: 1400px;
 }
 
+/* header Pef */
 
+#headlinks {
+    border: 3px #5A8282;
+    padding:5px 0px 5px 0px;
+    border-style: solid none;
+}
+
+#headlinks a { 
+    text-decoration: none;
+    color:black;
+}
+
+#headlinks a:hover { 
+    background-color: #B4162C; 
+}
 
 /* Main content areas */
 
@@ -251,10 +264,11 @@ img {
     cursor: auto;
     z-index: 1;
     overflow: visible;
-    border: 1px solid #ccc;
+    /*  border: 1px solid #ccc; */
+/* dodan */
     background-color: #fff;
     border-radius: 5px;    
-     padding: .5em 1em;
+    padding: .5em 1em;
     margin: 1em;
 }
 
@@ -276,12 +290,15 @@ img {
     position: relative;
     clear: both;
     background: #fff; 
-    border: 1px solid #ccc;
+/* no border  
+    border: 1px solid #ccc; */
+/*dodan*/
+    border-top: 3px solid #5A8282
     padding: 0;
     font-size: 10pt;   
     border-radius: 5px;
     margin: 1em 1em;    
-    box-shadow: 5px 5px 7px #e0e0e0;
+   /* box-shadow: 5px 5px 7px #e0e0e0; */
 }
 
 .pluslet ul {
@@ -321,29 +338,34 @@ img {
 
 .titlebar {
     color: #333;
-    position: relative;
+    position: relative; 
     height: 2em;
     padding: 0;
     margin: 0;
     width: 100%;
-    border-bottom: 1px solid #B3B9BF;
+/* top crta */
+    border-top: 3px solid #5A8282;
+  /*border-bottom: 1px solid #B3B9BF;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
     -moz-border-radius-topright: 5px;
     border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background-color: #333;
+    border-top-right-radius: 5px; */
+    background-color: #DEE6E6;
 }
 
 .titlebar_text {
-    font: 1em sans-serif;
+    font: 1em
+  /* arial */
+    font-family: "Arial";
     font-weight: 700;
     margin-bottom: 5px;
     margin-top: 0px;
-    padding: 5px 10px 5px;
+  /* spremenjeno */
+    padding: 2px 0px 5px;
     border:  none;
-    color: #fff;
+    color: #606060;
     background-color: transparent;
 
 }
@@ -651,10 +673,12 @@ overflow: auto;
 */
 
 .evenrow, .even {
-    background-color: #efefef;
+    background-color: #DEE6E6;
+    padding: .5em 0 .5em .5em; /* tabela viri širša*/
 }
 .oddrow, .odd {
     background-color: #fff;
+    padding: .5em 0 .5em .5em;
 }
 
 .list_bonus {
@@ -663,13 +687,21 @@ overflow: auto;
 }
 
 table {
-    font-size: 1.2em;
+/* lepši seznam rezultatov */ 
+    /*font-size: 1.2em;*/
 }
-table.item_listing td, div.item_listing p {
-    padding: .5em 0 .5em .5em;
+table.item_listing td, div.item_listing p {  
+    padding: .5em 0 .5em .5em; 
+/* lepše za pluslet: padding: .1em 0 0 0; */
     border-bottom: 1px solid #ccc;
     margin: 0;
 }
+
+/*pluslet table*/
+table.item_listing_pluslet td, div.item_listing p{
+    padding: .2em 0 .2em 0;
+}
+
 table.item_listing th {
     padding: .5em 0 .5em .5em;
     border-top: 1px solid #EFE9C2;
@@ -679,7 +711,7 @@ table.item_listing th {
 
 }
 
-table.istem_listing h2 {
+table.item_listing h2 {
     border:none;
     background-color: #fff;
 }
@@ -695,9 +727,9 @@ table.item_listing a:hover {
 .list_bonus {
     display: none;
     z-index: 200000;
-    margin-top: .5em;
+ /*   margin-top: .5em; */
     color: #333;
-    font-size: 0.8em !important;
+    font-size: 1em !important; /*spremenjeno*/
 }
 
 .list_bonus img {
@@ -719,7 +751,9 @@ table.item_listing a:hover {
     border-radius: 3px;
     height: 15px;
     width: 15px;
-    padding: 3px;
+    /* lepše tabele */
+/*  padding: 3px; */
+    margin-top: 3px;
 }
 
 .toggleLink {
@@ -729,7 +763,8 @@ table.item_listing a:hover {
 }
 
 .togglelink:hover {
-    background-color: #E67E22 !important;
+    color:black;
+    background-color: #B4162C !important;
 }
 
 /* The next three classes are used for even/odd striped tables of data/results */
@@ -1106,7 +1141,7 @@ div.video_thumb img {
 .plusheading, .type-heading { width: 70%; padding: 0; text-transform:uppercase;}
 
 .evenrow {
-    background-color: #E3E1D9;
+    background-color: #DEE6E6;
 }
 
 .bullet {
@@ -1127,14 +1162,14 @@ width:55px;
 
 .ts-blackwhite
 {
-	background-color:black;
-	color:white;
+	background-color:DEE6E6;
+	color:606060;
 }
 
 .ts-whiteblack
 {
 	background-color:white;
-	color:black;
+	color:0072BC;
 }
 
 .noshow {display: none;}
@@ -1143,13 +1178,13 @@ width:55px;
 
 /*  Media Queries */
 
-/* ≥ 568px  .pure-u-sm-* */
+/* â‰Ą 568px  .pure-u-sm-* */
 @media screen and (min-width: 35.5em) {
 
 }
 
 
-/* ≥ 768px  .pure-u-md-* */
+/* â‰Ą 768px  .pure-u-md-* */
 @media screen and (min-width: 48em) {
 
     h1 {
@@ -1185,12 +1220,50 @@ width:55px;
     }
 }
 
-/* ≥ 1024px     .pure-u-lg-* */
+/* â‰Ą 1024px     .pure-u-lg-* */
 @media screen and (min-width: 64em) {
 
 }
 
-/* ≥ 1280px     .pure-u-xl-* */
+/* â‰Ą 1280px     .pure-u-xl-* */
 @media screen and (min-width: 80em) {
 
+}
+
+/* ikona */
+.help {
+    color:#B4162C;
+    content:"?";
+    left:5px;
+    width:14px;
+    height:14px;
+    margin-top:-6px;
+    font-size:.9em;
+    font-weight:bold;
+    text-align:center;
+    color:#fff;
+    background:#B4162C;
+    /* css3 */
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+
+.info {
+    color:#5A8282;
+    content:"i";
+    left:3px;
+    width:14px;
+    height:14px;
+    margin-top:-8px;
+    font-size:.9em;
+    font-weight:bold;
+    font-style:italic;
+    text-align:center;
+    color:#fff;
+    background:#5A8282;
+    /* css3 */
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
 }
