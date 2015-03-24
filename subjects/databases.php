@@ -22,8 +22,8 @@ $db = new Querier;
     
 $use_jquery = array("ui");
 
-$page_title = _("Database List");
-$description = _("An alphabetical list of the electronic resources available.");
+$page_title = _("Viri");
+$description = _("Abecedni seznam virov");
 $keywords = _("library, research, electronic journals, databases, electronic resources, full text, online, magazine, articles, paper, assignment");
 
 // set a default if the letter isn't set
@@ -45,7 +45,7 @@ if (!isset($_GET["subject_id"])) {
 
 
 if ($_GET["letter"] == "bysub") {
-  $page_title = _("Database List By Subject");
+  $page_title = _("Seznam virov glede na temo");
   if ($clean_id == "") {
     $_GET["subject_id"] = "";
     $show_subjects = TRUE;
@@ -65,7 +65,7 @@ if ($_GET["letter"] == "bysub") {
 
 // Deal with databases by type display
 if ($_GET["letter"] == "bytype") {
-  $page_title = _("Database List By Format");
+  $page_title = _("Viri glede na vrsto");
   if (!isset($_GET["type"])) {
     $_GET["type"] = "";
     $show_types = TRUE;
@@ -85,11 +85,11 @@ if ($_GET["letter"] == "bytype") {
 $description_search = 0; // init to negative
 if (isset($_POST["searchterm"])) {
   $_GET["letter"] = "%" . $_POST["searchterm"];
-  $page_title = _("Database List: Search Results");
+  $page_title = _("Rezultat iskanja");
   $description_search = 1; // if you want to search descriptions, too, set to 1; otherwise to 0
 }
 
-$alphabet = getLetters("databases", $_GET["letter"], 1, TRUE);
+$alphabet = getLetters("databases", $_GET["letter"], "", TRUE);
 
 
 // Get our newest databases
@@ -107,7 +107,7 @@ foreach ($rnew as $myrow) {
     $db_url = $proxyURL;
   }
 
-  $newlist .= "<li><a href=\"$db_url$myrow[0]\">$myrow[0]</a></li>\n";
+  $newlist .= "<li><a href=\"$db_url$myrow[1]\">$myrow[0]</a></li>\n"; /* seznam novosti myrow[1]!*/
 }
 $newlist .= "</ul>\n";
 
@@ -116,11 +116,11 @@ $intro = "";
 
 if (isset($_POST["searchterm"])) {
   $selected = scrubData($_POST["searchterm"]);
-  $intro .= "<p style=\"background-color: #eee; padding: .3em; border: 1px solid #ccc; width: 75%;\">Search results for <strong>$selected</strong></p><br />";
+  $intro .= "<p style=\"background-color: #eee; padding: .3em; border: 1px solid #ccc; width: 75%;\">Rezultati za <strong>$selected</strong></p><br />";
 }
 
 $intro .= "<br class=\"clear-both\" />
-<div style=\"float: right; padding: 0 1.5em .5em 0;\"><a id=\"expander\" style=\"cursor: pointer;\">expand all descriptions</a></div>";
+<div style=\"float: right; padding: 0 1.5em .5em 0;\"><a id=\"expander\" style=\"cursor: pointer;\">vsi opisi</a></div>";
 
 // Create our table of databases object
 
@@ -139,7 +139,7 @@ if ($show_subjects == TRUE) {
 } else {
   // if it's the type type, show filter tip
   if (isset($clean_type) && $clean_type != "") {
-    $out .= "<div class=\"faq_filter\">displaying databases filtered by $clean_type >> <a href=\"databases.php?letter=bytype\">view all types</a></div>";
+    $out .= "<div class=\"faq_filter\">displaying databases filtered by $clean_type >> <a href=\"databases.php?letter=bytype\">vse vrste</a></div>";
   }
 
   // otherwise display our results from the database list
@@ -180,11 +180,11 @@ if (isset ($v2styles) && $v2styles == 1) {
   <!-- start pluslet -->
   <div class="pluslet">
     <div class="titlebar">
-      <div class="titlebar_text"><?php print _("Search Databases"); ?></div>
+      <div class="titlebar_text"><?php print _("Iskanje virov"); ?></div>
     </div>
     <div class="pluslet_body">
           <?php
-          $input_box = new CompleteMe("quick_search", "databases.php", $proxyURL, "Quick Search", "records", 30);
+          $input_box = new CompleteMe("quick_search", "databases.php", $proxyURL, "Iskanje", "records", 30);
           $input_box->displayBox();
           ?>
     </div>
@@ -193,18 +193,19 @@ if (isset ($v2styles) && $v2styles == 1) {
   <!-- start pluslet -->
   <div class="pluslet">
     <div class="titlebar">
-      <div class="titlebar_text"><?php print _("Newest Databases"); ?></div>
+      <div class="titlebar_text"><?php print _("NajnovejĹˇe dodano"); ?></div>
     </div>
     <div class="pluslet_body"> <?php print $newlist; ?> </div>
   </div>
   <!-- end pluslet -->
-
+  <!--
   <div class="pluslet">
     <div class="titlebar">
-      <div class="titlebar_text"><?php print _("Key to Icons"); ?></div>
+      <div class="titlebar_text"><?php print _("Razlaga ikon"); ?></div>
     </div>
     <div class="pluslet_body"> <?php global $all_ctags; print showIcons($all_ctags, 1); ?></div>
   </div>
+   -->
   <br />
 
 </div>
