@@ -167,7 +167,7 @@ if (count($all_tabs) > 1) {
     $multi_tab = FALSE;
 }
 
-print $social_and_search;
+// print $social_and_search;
 
 ?>
 
@@ -177,19 +177,19 @@ print $social_and_search;
         <div id="tab-container">
             <?php
 			
-			$printer_tabs ='<div class="printer_tabs"><div class="pure-button pure-button-topsearch print-img-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>'; 
-            $printer_no_tabs ='<div class="printer_no_tabs"><div class="pure-button pure-button-topsearch print-img-no-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>';
+			// $printer_tabs ='<div class="printer_tabs"><div class="pure-button pure-button-topsearch print-img-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>'; 
+            // $printer_no_tabs ='<div class="printer_no_tabs"><div class="pure-button pure-button-topsearch print-img-no-tabs"><img src="../assets/images/printer.png" alt="Print" title="Print"></div></div>';
 			
             // Only show tabs if there is more than one tab
 
-            if ($multi_tab == TRUE) {
-                $lobjGuide->outputNavTabs('public');
-                $bonus_class= "";
-                print $printer_tabs;
-            } else {
-                $bonus_class = "no-tabs";
-				print $printer_no_tabs;
-            }
+            // if ($multi_tab == TRUE) {
+            //    $lobjGuide->outputNavTabs('public');
+            //    $bonus_class= "";
+            //    print $printer_tabs;
+            //} else {
+            //    $bonus_class = "no-tabs";
+			//	print $printer_no_tabs;
+            //}
 
             ?>
 
