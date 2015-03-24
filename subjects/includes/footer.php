@@ -9,19 +9,24 @@
 
 <div id="footer">
     <p class="close">
-
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license"><img alt="Creative Commons licenca" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" /></a><br />
+    <br />
     <?php 
         if (isset($last_mod) && $last_mod != "") {
-            print _("Revised: ") . $last_mod;
+            print _("Posodobljeno ") . $last_mod;
         } else {
-            print _("This page maintained by: ") . "<a href=\"mailto:$administrator_email\">
+            print _("") . "<a href=\"mailto:$administrator_email\">
     $administrator</a>";
         }
 
+
     ?>
-    <br />
+	<br />
+        <br />
+
     Powered by <a href="http://www.subjectsplus.com/">SubjectsPlus</a>
     </p>
+	
 </div><!-- end #footer div -->
 
 
