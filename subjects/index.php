@@ -49,7 +49,7 @@ if (isset($_POST["search"])) {
     $search = scrubData($_POST["search"]);
 }
 
-// set up our checkboxes for guide types
+/* // set up our checkboxes for guide types
 $tickboxes = "<ul>";
 
 foreach ($guide_types as $key) {
@@ -57,10 +57,11 @@ foreach ($guide_types as $key) {
     if ($view_type == "all" || $view_type == $key) {
         $tickboxes .= " checked=\"checked\"";
     }
-    $tickboxes .= "/>" . ucfirst($key) . " Guides</li></li>\n";
+    $tickboxes .= "/>" . ucfirst($key) . " </li></li>\n";
 }
 
 $tickboxes .= "</ul>";
+*/
 
 // Get the subjects for jquery autocomplete
 $suggestibles = "";  // init
@@ -168,30 +169,32 @@ if (isset ($v2styles) && $v2styles == 1) {
       <!-- start pluslet -->
       <div class="pluslet">
         <div class="titlebar">
-          <div class="titlebar_text"><?php print _("Search Databases"); ?></div>
+          <div class="titlebar_text"><?php print _("Iskanje"); ?></div>
         </div>
         <div class="pluslet_body">
               <?php
-              $input_box = new CompleteMe("quick_search", "index.php", $proxyURL, "Quick Search", "guides", 30);
+              $input_box = new CompleteMe("quick_search", "index.php", $proxyURL, "Iskanje", "guides", 30);
               $input_box->displayBox();
               ?>
         </div>
       </div>
-      <!-- end pluslet -->
+      <!-- end pluslet--> 
+        <!-- start pluslet skrito, ker jih je manj kot 5!
         <div class="pluslet">
             <div class="titlebar">
-                <div class="titlebar_text"><?php print _("Newest Guides"); ?></div>
+                <div class="titlebar_text"><?php print _("Novi vodiči"); ?></div>
             </div>
             <div class="pluslet_body"> <?php print $newest_guides; ?> </div>
         </div>
-        <!-- start pluslet -->
+        -->
+        <!-- start pluslet skrito, ker ne dela!
         <div class="pluslet">
             <div class="titlebar">
-                <div class="titlebar_text"><?php print _("Newest Databases"); ?></div>
+                <div class="titlebar_text"><?php print _("Nove zbirke"); ?></div>
             </div>
             <div class="pluslet_body"> <?php print $newlist; ?> </div>
         </div>
-        <!-- end pluslet -->
+        end pluslet -->
         <br />
 
     </div>
