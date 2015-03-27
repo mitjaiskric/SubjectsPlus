@@ -343,10 +343,10 @@ msgstr ""
 
 #: control/guides/index.php:17
 msgid "Check Guide Links"
-msgstr ""
+msgstr "Preverite povezave v vodiču"
 
 #: control/guides/index.php:30
-msgid "Please check with the guide's owner before modifying"
+msgid "Vprašajte avtorja vodiča za dovoljenje, preden začnete delati spremembe."
 msgstr ""
 
 #: control/guides/index.php:35
@@ -359,7 +359,7 @@ msgstr ""
 
 #: control/guides/index.php:78
 msgid "You don't have any guides yet.  Why not create one?"
-msgstr ""
+msgstr "Nimate še nobenega vodiča. Zakaj ga ne bi ustvarili?"
 
 #: control/guides/index.php:82
 msgid "Edit Your Guides"
