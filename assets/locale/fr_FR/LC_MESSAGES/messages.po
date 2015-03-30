@@ -25,42 +25,44 @@ msgstr "Prosimo, preverite vaše uporabniško ime in geslo ter poskusite znova. 
 
 #: control/guides/metadata.php:55 control/admin/user.php:111
 msgid "There is no record by that ID."
-msgstr ""
+msgstr "Noben zapis s tem ID ne obstaja."
 
 #: control/guides/metadata.php:68
 msgid "You must have a title, shortform, type, and one associated staff member.  Please go back and fix these omissions.  And turn on JavaScript, for goodness sakes!"
-msgstr ""
+msgstr "Morate imeti naslov, kratki opis, vrsto in enega povezanega zaposlenega. Prosimo, pojdite nazaj in dopolnite manjkajoče stvari. Ter vklopite JavaScript!"
 
 #: control/guides/metadata.php:169
 msgid "Thwarted!  You must have at least one staff member for a guide."
-msgstr ""
+msgstr "Zavrnjeno! Imeti morate vsaj enega zaposlenega za vodič."
 
 #: control/guides/metadata.php:189 control/records/record.php:495
 msgid "You must have at least one subject."
-msgstr ""
+msgstr "Imeti morate vsaj eno temo."
 
 #: control/guides/metadata.php:219 control/faq/faq.php:138
 #: control/records/record.php:525 control/talkback/talkback.php:138
 #: control/admin/user.php:240
 msgid "You must complete all required form fields."
-msgstr ""
+msgstr "Izpolniti morate vsa zahtevana polja."
 
 #: control/guides/metadata.php:246
 msgid "There is already a guide with that short form!  Try again."
-msgstr ""
+msgstr "Vodič s takšnim kratkim opisom že obstaja! Poskusite znova."
 
 #: control/guides/helpers/fck_get_tokens.php:35
 msgid "<strong>Search</strong> for a resource saved in SubjectsPlus"
-msgstr ""
+msgstr "<strong>Poiščite</strong> vir, shranjen v SubjectsPlus"
 
 #: control/guides/helpers/fck_get_tokens.php:36
 msgid "<strong>Tick</strong> the button next to the desired resource and click OK (bottom)"
 msgstr ""
 
+#. Išči?
 #: control/guides/helpers/fck_get_tokens.php:42
 #: control/guides/helpers/discover.php:56
+#, fuzzy
 msgid "Go!"
-msgstr ""
+msgstr "Pojdi!"
 
 #: control/guides/helpers/fck_get_tokens.php:43
 msgid "Include icons?"
