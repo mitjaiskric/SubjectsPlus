@@ -124,5 +124,99 @@ msgstr "- Brskaj po Plusletih"
 
 #: control/guides/helpers/save_guide.php:70
 msgid "Guide Updated."
-msgstr "Vodič posodobljen."
+msgstr "Vodič je posodobljen."
+
+#: control/guides/helpers/ajax_mod.php:32
+msgid "This item has been removed from your guide"
+msgstr "Ta vsebina je bila odstranjena iz vašega vodiča"
+
+#: control/guides/helpers/ajax_mod.php:34
+msgid "There was a problem with the delete"
+msgstr "Pojavila se je težava z vašim izbrisom"
+
+#: control/guides/helpers/ajax_mod.php:79
+msgid "Thy will be done.  Ranks updated."
+msgstr "To bo narejeno. Razvrstitev je posodobljena."
+
+#: control/guides/helpers/ajax_mod.php:81
+msgid "There was a problem with your update."
+msgstr "Pojavila se je težava z vašo posodobitvijo."
+
+#: control/guides/helpers/fck_get_cat.php:46
+msgid "Select the type of link you wish to create, and click <em>Create Link</em>."
+msgstr "Izberite vrsto povezave, ki jo želite ustvariti, in kliknite <em>Ustvari povezavo</ em>."
+
+#. subject heading? naslov predmeta?
+#: control/guides/helpers/fck_get_cat.php:49
+msgid "A. Link to Subject Heading"
+msgstr "A. Povezava na predmetno oznako."
+
+#: control/guides/helpers/fck_get_cat.php:51
+msgid "Prefix text (optional)"
+msgstr "Predpona (izbirno)"
+
+#: control/guides/helpers/fck_get_cat.php:53
+msgid "LC Subject Heading"
+msgstr "Predmetna oznaka Kongresne knjižnice (ZDA)"
+
+#: control/guides/helpers/fck_get_cat.php:54
+#: control/guides/helpers/fck_get_cat.php:67
+#: control/guides/helpers/fck_get_cat.php:76
+msgid "Create Link"
+msgstr "Ustvari povezavo"
+
+#: control/guides/helpers/fck_get_cat.php:56
+msgid "<strong>Examples</strong> (the unlinked text is from the optional Prefix text box):</p>\r\n"
+"\t<blockquote>\r\n"
+"\tPN 1997 - Screenplays - see <span class=\"linkie\">Motion picture plays</span><br />\r\n"
+"\tTR 899 <span class=\"linkie\">Motion Pictures--Editing<span>\r\n"
+"\t</blockquote>"
+msgstr "<strong>Primeri</ strong> (nepovezano besedilo je iz polja dodatne predpone): </p>\r\n"
+"<blockquote>\r\n"
+"PN 1997 - Screenplays - glej <span class = \"linkie\"> Filmska igra</span><br/>\r\n"
+"TR 899 <span class = \"linkie\">Motion Pictures--Editing<span>\r\n"
+"</blockquote>"
+
+#: control/guides/helpers/fck_get_cat.php:64
+msgid "B. Link to Keyword Search Results"
+msgstr "B. Povezava na zadetke iskanja po ključnih besedah."
+
+#: control/guides/helpers/fck_get_cat.php:66
+msgid "E.g., fast cars"
+msgstr "Prim.: hitri avtomobili"
+
+#: control/guides/helpers/fck_get_cat.php:71
+msgid "C. Link to Call Number (DVDs and Reserves only in Voyager)"
+msgstr "C. Povezava na signaturo"
+
+#: control/guides/helpers/fck_get_cat.php:73
+msgid "E.g., DVD 3001"
+msgstr "Prim.: DVD 3001"
+
+#: control/guides/helpers/fck_get_cat.php:75
+msgid "Title or Link Text"
+msgstr "Besedilo naslova ali povezave"
+
+#: control/guides/helpers/fck_get_cat.php:85
+msgid "2. Your Catalog Link (Subject Heading):"
+msgstr "2. povezava na vaš katalog (predmetna oznaka):"
+
+#: control/guides/helpers/fck_get_cat.php:95
+msgid "2. Your Catalog Link (Keywords):"
+msgstr "2. povezava na vaš katalog (ključna beseda):"
+
+#: control/guides/helpers/fck_get_cat.php:97
+#: control/guides/helpers/fck_get_cat.php:108
+msgid "If the link looks good, hit the OK button to insert the token into the pluslet."
+msgstr "Če je povezava v redu, kliknite gumb OK za vstavljanje žetona v pluslet."
+
+#: control/guides/helpers/fck_get_cat.php:106
+msgid "2. Your Catalog Link (Call Number):"
+msgstr "2. povezava na vaš katalog (signatura):"
+
+#. LinkChecker - PreverjanjePovezav ??
+#: control/guides/helpers/guide_bits.php:68
+#, fuzzy
+msgid "LinkChecker Results for "
+msgstr "PreverjanjePovezav zadetki za "
 
