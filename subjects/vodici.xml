@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
 <title>TEST RSS Raziskovalni vodiči - TEST </title>
 <subtitle>Knjižnica UL PeF</subtitle>
 <link href="http://vodici.pef.uni-lj.si/vodici.xml" rel="self" />
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+<title>Raziskovalni vodiči</title>
+<subtitle>Knjižnica UL PeF</subtitle>
+<link href="http://vodici.pef.uni-lj.si/subjects/vodici.xml" rel="self" />
+>>>>>>> origin/PeF
 <link href="http://vodici.pef.uni-lj.si/"/>
 
 <updated>2015-03-27T07:00:00Z</updated>
@@ -14,6 +23,7 @@
 <id>tag:Raziskovalni_vodici,2015-17-03::knjiznica</id>
 
 <entry>
+<<<<<<< HEAD
   <title>Vodič za raziskovalce – osnovne informacije</title>
   <link href="http://vodici.pef.uni-lj.si/guide.php?subject=bibliogr"/>
   <id>tag:knjiznica@pef.uni-lj.si,2015-03-26:knjiznica</id>
@@ -23,13 +33,28 @@
   <author>
     <name>Knjižnica PeF</name>
     <uri>http://vodici.pef.uni-lj.si</uri>
+=======
+  <title>Vodič za raziskovalce – bibliografije</title>
+  <link href="http://vodici.pef.uni-lj.si/subjects/guide.php?subject=bibliogr"/>
+  <id>tag:knjiznica@pef.uni-lj.si,2015-03-26:knjiznica</id>
+  <updated>2015-03-26T07:00:00Z</updated>
+  <summary>Objavljen je Vodič za raziskovalce – bibliografije.</summary>
+
+  <author>
+    <name>Knjižnica PeF</name>
+    <uri>http://vodici.pef.uni-lj.si/</uri>
+>>>>>>> origin/PeF
     <email>knjiznica@pef.uni-lj.si</email>
   </author>
 </entry>
 
 <entry>
   <title>Vodič za raziskovalce – osnovne informacije</title>
+<<<<<<< HEAD
   <link href="http://vodici.pef.uni-lj.si/guide.php?subject=razisk"/>
+=======
+  <link href="http://vodici.pef.uni-lj.si/subjects/guide.php?subject=razisk"/>
+>>>>>>> origin/PeF
   <id>tag:knjiznica@pef.uni-lj.si,2015-03-23:knjiznica</id>
   <updated>2015-03-23T07:30:00Z</updated>
   <summary>Objavljen je Vodič za raziskovalce – osnovne informacije.</summary>
@@ -43,16 +68,28 @@
 
 <entry>
    <title>Logopedija in surdopedagogika</title>
+<<<<<<< HEAD
    <link href="http://vodici.pef.uni-lj.si/guide.php?subject=logo"/>
+=======
+   <link href="http://vodici.pef.uni-lj.si/subjects/guide.php?subject=logo"/>
+>>>>>>> origin/PeF
    <id>tag:knjiznica@pef.uni-lj.si,2015-03-23:knjiznica</id>
    <updated>2015-03-17T10:30:00Z</updated>
    <summary>Objavljen je Raziskovalni vodič: Logopedija in surdopedagogika.</summary>
 
    <author>
      <name>Knjižnica PeF</name>
+<<<<<<< HEAD
      <uri>http://vodici.pef.uni-lj.si</uri>
+=======
+     <uri>http://vodici.pef.uni-lj.si/</uri>
+>>>>>>> origin/PeF
      <email>knjiznica@pef.uni-lj.si</email>
    </author>
 </entry>
 
+<<<<<<< HEAD
 </feed>
+=======
+</feed>
+>>>>>>> origin/PeF
