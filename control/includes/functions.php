@@ -782,7 +782,7 @@ function getHeadshot($email, $pic_size="medium", $class="staff_photo") {
       break;
   }
 
-  $headshot .= " class=\"$class\" />";
+  $headshot .= " class=\"$class\" align=\"left\" />";
   return $headshot;
 }
 
@@ -819,9 +819,9 @@ function showStaff($email, $picture=1, $pic_size="medium", $link_name = 0) {
     }
 
 
-    $staffer = "<td>";
+    $staffer = "<p class=\"clear-both\">";
     $staffer .= getHeadshot($email, $pic_size);
-    $staffer .= "</td><td><strong>$full_name</strong><br />$myrow[2]<br />$tel_prefix$myrow[3]<br /><a href=\"mailto:$myrow[4]\">$myrow[4]</a></td>";
+    $staffer .= "<strong>$full_name</strong><br />$myrow[2]<br />$tel_prefix$myrow[3]<br /><a href=\"mailto:$myrow[4]\">$myrow[4]</a></p>";
   }
 
   return $staffer;
@@ -965,50 +965,14 @@ function getLetters($table, $selected = "A", $numbers = 1, $show_formats = TRUE)
 function prepareTH($array) {
 
   $th = "
-<table width=\"100%\" class=\"item_listing\">
-<tr class=\"pure-g staff-heading\">";
+<table width=\"98%\" class=\"item_listing\" cellspacing=\"0\" cellpadding=\"3\">
+<tr>";
 
   foreach ($array as $key => $value) {
     $th .= "<th>$value</th>";
   }
 
   $th .= "</tr>";
-
-  return $th;
-}
-
-function prepareTHUM($array) {
-   $th = "
-    <table class=\"footable foo1\" data-filter=\"#filter\">
-      <thead>
-        <tr class=\"staff-heading\">";
-    
-        foreach ($array as $header) {
-
-          if($header["hide"] == true) {
-                if($header["nosort"]== true) {
-                    $th .= "<th data-hide=\"phone,mid\" data-sort-ignore=\"true\">"
-                        . $header['label'] . "</th>";
-                } 
-                else {
-                  $th .= "<th data-hide=\"phone,mid\">"
-                      . $header['label'] . "</th>";
-                } 
-          
-          }
-          else {
-                if($header["nosort"]== true){
-                  $th .= "<th data-sort-ignore=\"true\">" .$header['label'] ."</th>";
-                } 
-
-                else {
-                  $th .= "<th>" .$header['label'] ."</th>";
-                }            
-          }
-
-        }
-
-    $th .= "</tr></thead>";
 
   return $th;
 }

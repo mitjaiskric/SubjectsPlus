@@ -102,8 +102,8 @@ $alphabet = getLetters($our_cats, $selected_letter);
 
 
 if ($selected_letter == "A-Z") {
-  $intro = "<p><img src=\"$IconPath/information.png\" alt=\"icon\" /> Click on a name for more information.</p><br />
-<form class=\"pure-form\"><strong>Search:</strong> <input type=\"text\" placeholder=\"by name or title\" id=\"filter\" class=\"filter-status\"> <span class=\"clear-filter\"><button class=\"clear-filter-icon\">X</button> Clear</span></form><br />";
+  $intro = "<p><img src=\"$IconPath/information.png\" alt=\"icon\" /> Click on a name for more information.</p>
+<br />";
 }
 
 $staff_data = new StaffDisplay();
@@ -138,119 +138,13 @@ include("includes/header_um.php");
 
       ?>
       <div class="pure-u-1">
-          <div class="breather-single">            
-             <?php print $out;  ?>             
+          <div class="breather-single">
+             <?php print $out;  ?> 
           </div>
       </div>
 
 </div><!--end pure-g-->
 </div> <!--end panel-container-->
-
-
-<!--Data Table-->
-<link type="text/css" rel="stylesheet" href="<?php print $AssetPath; ?>css/shared/footable.core.css">
-<script src="themes/um/js/footable.js" type="text/javascript"></script>
-<script src="themes/um/js/footable.sort.js" type="text/javascript"></script>
-<script src="themes/um/js/footable.filter.js" type="text/javascript"></script>
-
-<script type="text/javascript">     
-
-    //set breakpoints 
-    $('.footable').footable({
-        breakpoints: {
-            mid: 600,
-            phone:480
-        }
-    });
-
-    //A-Z list scripts
-    $rowcolor = $(".foo1 .footable-row-detail").prev(".evenrow");
-
-    $('.foo1').trigger('footable_expand_first_row').addClass("evenrow");
-
-    $( ".foo1 .zebra.evenrow, .foo1 .zebra.evenrow td, .foo1 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo1 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          });
-
-    
-
-    //Bind functions for responsive/resizing A-Z
-    $('.foo1').bind('footable_breakpoint', function() {
-
-          $('.foo1').trigger('footable_expand_first_row');
-
-           $( ".foo1 .zebra.evenrow, .foo1 .zebra.evenrow td, .foo1 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo1 .footable-row-detail .footable-row-detail-cell");
-              }
-          });
-
-    });
-     
-    //Clear filter A-Z
-    $('.clear-filter').click(function (e) {
-      e.preventDefault();
-      $('.filter-status').val('');
-      $('.footable').trigger('footable_clear_filter');
-    });  
-
-    
-
-    //Department scripts
-    $rowcolor2 = $(".foo2 .footable-row-detail").prev(".evenrow");
-
-    $( ".foo2 .evenrow, .foo2 .evenrow td, .foo2 .footable-toggle").on("click", function() {
-        if ($rowcolor2 = true){
-            $(".foo2 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-        }
-    });  
-
-    $('.foo2').bind('footable_breakpoint', function() {        
-
-          $(".foo2 .footable-row-detail").addClass("evenrow");
-
-          $( ".foo2 .evenrow, .foo2 .evenrow td, .foo2 .footable-toggle").on("click", function() {
-              if ($rowcolor2 = true){
-                  $(".foo2 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          }); 
-    });
-
-
-    //Subject Librarians A-Z scripts
-    $rowcolor3 = $(".foo3 .footable-row-detail").prev(".evenrow");
-
-    $('.foo3').trigger('footable_expand_first_row');
-
-    $( ".foo3 .evenrow, .foo3 .evenrow td, .foo3 .footable-toggle").on("click", function() {
-        if ($rowcolor3 = true){
-            $(".foo3 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-        }
-    });
-
-
-
-    $('.foo3').bind('footable_breakpoint', function() {
-
-          $('.foo3').trigger('footable_expand_first_row');          
-
-          $(".foo3 .footable-row-detail").addClass("evenrow");
-
-          $( ".foo3 .zebra.evenrow, .foo3 .zebra.evenrow td, .foo3 .footable-toggle").on("click", function() {
-              if ($rowcolor = true){
-                  $(".foo3 .footable-row-detail .footable-row-detail-cell").addClass("evenrow");
-              }
-          });
-
-    });  
-
-
-
-
-</script>
-
 <?php
 
 ////////////

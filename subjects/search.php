@@ -92,8 +92,8 @@ if (isset($_POST["searchterm"])) {
 $subtitle = _("Rezultati za ") . $_POST['searchterm'];
 
 } else {
-	$subtitle = _("NiÄŤesar niste vpisali");
-	$search_result =  _("<p>Prosimo vpiĹˇite nekaj ÄŤrk.</p>");
+	$subtitle = _("Ničesar niste vpisali");
+	$search_result =  _("<p>Prosimo vpišite nekaj črk.</p>");
 }
 ?>
 
@@ -102,7 +102,7 @@ $subtitle = _("Rezultati za ") . $_POST['searchterm'];
 
   <div class="pluslet no_overflow">
     <div class="titlebar">
-      <div class="titlebar_text"><?php print _("PoiĹˇÄŤite raziskovalne vodiÄŤe, podatkovne zbirke,..."); ?></div>
+      <div class="titlebar_text"><?php print _("Poiščite raziskovalne vodiče, podatkovne zbirke,..."); ?></div>
       <div class="titlebar_options"></div>
     </div>
     <div class="pluslet_body">

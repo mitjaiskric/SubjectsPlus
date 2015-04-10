@@ -96,7 +96,7 @@ class StaffDisplay {
         $db = new Querier;
         $r = $db->query($q);
 
-        $items = "<table class=\"footable foo2\"><thead><tr><th data-sort-ignore=\"true\">&nbsp;</th><th data-sort-ignore=\"true\">&nbsp;</th><th data-sort-ignore=\"true\" data-hide=\"phone,mid\">&nbsp;</th><th data-sort-ignore=\"true\" data-hide=\"phone\">&nbsp;</th><th data-hide=\"phone,mid\" data-sort-ignore=\"true\">&nbsp;</th></tr></thead>";
+        $items = "<table width=\"98%\" class=\"item_listing\">";
 
         $row_count = 0;
         $colour1 = "oddrow";
@@ -136,17 +136,14 @@ class StaffDisplay {
           }
 
           if ($current_dept != $dept_id) {
-            $items .= "<tr><td class=\"dept_label\" colspan=\"5\"><a name=\"$dept_id\"></a><h2 class=\"dept_header\">$dept_name&nbsp; &nbsp;" . $tel_prefix . $dept_tel . "</h2></td></tr>";
+            $items .= "<tr><td align=\"center\" colspan=\"4\"><a name=\"$dept_id\"></a><h2 class=\"dept_header\">$dept_name&nbsp; &nbsp;" . $tel_prefix . $dept_tel . "</h2></td></tr>";
           }
 
           $items .= "<tr class=\"$row_colour\">
-          <td class=\"$row_colour staffpic\">";
-
+		<td style=\"width: 20%\" align=\"left\" class=\"$row_colour\"><span class=\"staff_contact\">";
+          
           // Here we stick in their headshot; comment out if you don't want; maybe later this should be an admin parameter
-          $items .= getHeadshot($email, 'medium');
-
-          $items .= "</td>
-		      <td class=\"$row_colour\"><span class=\"staff_contact\">";          
+          $items .= getHeadshot($email, '');
 
           if ($print_display != 1) {
             $items .= "<a href=\"$link_to_details\">$lname, $fname</a>";
@@ -155,9 +152,9 @@ class StaffDisplay {
           }
           
           $items .= "</span></td>
-    			<td class=\"$row_colour\">$title $assoc_subjects</td>
-    			<td class=\"$row_colour\">$tel_prefix$tel </td>
-    			<td class=\"$row_colour\"><a href=\"mailto:$email\">$email</a></td></tr>";
+			<td style=\"width: 40%\" align=\"left\" class=\"$row_colour\">$title $assoc_subjects</td>
+			<td align=\"left\" class=\"$row_colour\">$tel_prefix$tel </td>
+			<td class=\"$row_colour\"><a href=\"mailto:$email\">$email</a></td></tr>";
 
           $row_count++;
           $current_dept = $dept_id;
@@ -182,8 +179,11 @@ class StaffDisplay {
         $db = new Querier;
         $r = $db->query($q);
 
-        $items = "<table class=\"footable foo3\" width=\"100%\">
-        <thead><tr class=\"staff-heading\"><th data-sort-ignore=\"true\">&nbsp;</th><th><strong>" . _("Librarian") . "</strong></th><th data-hide=\"phone,mid\" data-sort-ignore=\"true\"><strong>" . _("Subject Responsibilities") . "</strong></th></tr></thead>";
+        $items = "<table width=\"98%\" class=\"item_listing\">
+			<tr>
+                            <th width=\"300\">" . _("Librarian") . "</th>
+                            <th>" . _("Subject Responsibilities") . "</th>
+			</tr>";
 
         $row_count = 0;
         $colour1 = "oddrow";
@@ -192,9 +192,10 @@ class StaffDisplay {
           foreach ($r as $myrow) {
           $row_colour = ($row_count % 2) ? $colour1 : $colour2;
 
-          $items .= "<tr class=\"$row_colour\">\n";
+          $items .= "<tr class=\"$row_colour\">\n
+					<td width=\"400\">";
           $items .= showStaff($myrow[4], '', '', 1);
-          
+          $items .= "</td>\n";
           $items .= "<td>";
 
           $sub_query = "select subject, shortform from subject, staff_subject
@@ -238,7 +239,6 @@ class StaffDisplay {
 
         $items .= "</table>";
         break;
-
       case "Librarians by Subject Specialty":
         $q = "select lname, fname, title, tel, email, subject, staff.staff_id, shortform from
                     staff, staff_subject, subject
@@ -321,21 +321,17 @@ class StaffDisplay {
             AND active = 1
 			ORDER BY s.lname, s.fname";
 
-        $hf1 = array("label"=>"Name","hide"=>false,"nosort"=>false);
-        $hf2 = array("label"=>"Title","hide"=>true,"nosort"=>false);
-        $hf3 = array("label"=>"Phone","hide"=>false,"nosort"=>true);
-        $hf4 = array("label"=>"Email","hide"=>true,"nosort"=>true);
+        $hf1 = _("Name");
+        $hf2 = _("Title");
+        $hf3 = _("Phone");
+        $hf4 = _("Email");
 
         $head_fields = array($hf1, $hf2, $hf3, $hf4);
-
-
 
         $db = new Querier;
             $r = $db->query($q,PDO::FETCH_ASSOC);
 
-        $items = prepareTHUM($head_fields);
-
-
+        $items = prepareTH($head_fields);
 
         $row_count = 0;
         $colour1 = "oddrow";
@@ -371,7 +367,7 @@ class StaffDisplay {
 
           $items .= "
 		<tr class=\"zebra $row_colour\">
-			<td class=\"staff-name-row\">";
+			<td  class=\"staff-name-row\">";
           
           if ($print_display != 1) {
             $items .= "<a href=\"$link_to_details\" class=\"no_link\">$full_name</a>";

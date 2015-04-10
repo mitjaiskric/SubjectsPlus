@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* Redirect so directory contents can't be viewed */
 header('Location: subjects/index.php');
 
@@ -21,9 +21,9 @@ page take the user to the subject guides splash page.  Or put whatever you want 
 <ul>
 
 
-<!-- PEF prevod -->
+<!-- PEF prevod -->	
     <li><a href="subjects/index.php">Prva stran</a></li>
-    <li><a href="subjects/databases.php">Viri</a></li>
+    <li><a href="subjects/databases.php">Databases page</a></li>
     <li><a href="subjects/faq.php">Pogosta vprašanja</a></li>
     <li><a href="subjects/staff.php">Zaposleni</a></li>
     <li><a href="subjects/talkback.php">Pogovori</a></li>

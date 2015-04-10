@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  *   @file index.php
  *   @brief Display the subject guides splash page

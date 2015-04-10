@@ -51,7 +51,7 @@ foreach ($alpha_result as $myletter) {
     $count++;
 }
 
-$atoz .= "<a href=\"index.php?letter=all\">[all]</a>";
+$atoz .= "<a href=\"index.php?letter=all\">[vsi]</a>";
 
 // end A-Z header for now
 

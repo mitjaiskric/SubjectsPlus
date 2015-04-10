@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  *   @file guide.php
  *   @brief Display the subject guides

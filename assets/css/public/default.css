@@ -116,7 +116,7 @@ img {
 
 
 /* Header area */
-/*viĹˇji header */
+/*višji header */
 
 #header {
     background: #fff;
@@ -674,7 +674,7 @@ overflow: auto;
 
 .evenrow, .even {
     background-color: #DEE6E6;
-    padding: .5em 0 .5em .5em; /* tabela viri širša*/
+    padding: .5em 0 .5em .5em; /* tabela viri �ir�a*/
 }
 .oddrow, .odd {
     background-color: #fff;
@@ -687,12 +687,12 @@ overflow: auto;
 }
 
 table {
-/* lepši seznam rezultatov */ 
+/* lep�i seznam rezultatov */ 
     /*font-size: 1.2em;*/
 }
 table.item_listing td, div.item_listing p {  
     padding: .5em 0 .5em .5em; 
-/* lepše za pluslet: padding: .1em 0 0 0; */
+/* lep�e za pluslet: padding: .1em 0 0 0; */
     border-bottom: 1px solid #ccc;
     margin: 0;
 }
@@ -751,7 +751,7 @@ table.item_listing a:hover {
     border-radius: 3px;
     height: 15px;
     width: 15px;
-    /* lepše tabele */
+    /* lep�e tabele */
 /*  padding: 3px; */
     margin-top: 3px;
 }
@@ -1178,13 +1178,13 @@ width:55px;
 
 /*  Media Queries */
 
-/* â‰Ą 568px  .pure-u-sm-* */
+/* ≥ 568px  .pure-u-sm-* */
 @media screen and (min-width: 35.5em) {
 
 }
 
 
-/* â‰Ą 768px  .pure-u-md-* */
+/* ≥ 768px  .pure-u-md-* */
 @media screen and (min-width: 48em) {
 
     h1 {
@@ -1220,12 +1220,12 @@ width:55px;
     }
 }
 
-/* â‰Ą 1024px     .pure-u-lg-* */
+/* ≥ 1024px     .pure-u-lg-* */
 @media screen and (min-width: 64em) {
 
 }
 
-/* â‰Ą 1280px     .pure-u-xl-* */
+/* ≥ 1280px     .pure-u-xl-* */
 @media screen and (min-width: 80em) {
 
 }
