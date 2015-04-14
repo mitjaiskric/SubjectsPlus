@@ -62,7 +62,7 @@ msgstr "<strong>Izberite</strong> gumb zraven želenega vira in kliknite OK (spo
 #: control/guides/helpers/discover.php:56
 #, fuzzy
 msgid "Go!"
-msgstr "Pojdi!"
+msgstr "Išči!"
 
 #: control/guides/helpers/fck_get_tokens.php:43
 msgid "Include icons?"
@@ -361,7 +361,7 @@ msgstr "Prepričajte se, da tak vodič še ne obstaja!"
 
 #: control/guides/index.php:102
 msgid "Create new guide"
-msgstr "UStvari nov vodič"
+msgstr "Ustvari nov vodič"
 
 #: control/guides/index.php:106
 msgid "Tips"
@@ -822,7 +822,7 @@ msgstr "Zapis uspešno posodobljen"
 
 #: control/includes/classes/sp_CompleteMe.php:52
 msgid "Go"
-msgstr "Pojdi"
+msgstr "Išči"
 
 #: control/includes/classes/sp_FAQ.php:69
 msgid "There is no active record with that ID.  Weird.  Why not make one?"
@@ -915,7 +915,7 @@ msgstr "Odstrani iz tega vodiča"
 
 #: control/includes/classes/sp_DbHandler.php:45
 msgid "Sorry, there are no results at this time."
-msgstr "Oprostite, trenutno ni nobenega zadetka."
+msgstr "Oprostite, trenutno ni ničesar za prikaz."
 
 #: control/includes/classes/sp_DbHandler.php:89
 msgid "Note:"
@@ -1675,7 +1675,7 @@ msgstr "Seznam zaposlenih"
 
 #: subjects/databases.php:14
 msgid "Database List"
-msgstr "Seznam podatkovnih zbirk"
+msgstr "Seznam virov"
 
 #: subjects/databases.php:15
 msgid "An alphabetical list of the electronic resources available."
@@ -1833,9 +1833,10 @@ msgstr "komentar:"
 msgid "Enter Number:"
 msgstr "Vpišite številko:"
 
+#. Gumb pod izbirnikom
 #: subjects/talkback.php:257
 msgid "Submit"
-msgstr "Oddaj"
+msgstr "Pošlji"
 
 #: subjects/includes/footer.php:13
 msgid "Revised: "
